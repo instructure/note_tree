@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @notebook.text %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @notebook.date %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @notebook.title %>
+</p>
+
+<%= link_to 'Edit', edit_notebook_path(@notebook) %> |
+<%= link_to 'Back', notebooks_path %>
