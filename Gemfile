@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
-gem 'factory_girl'
-gem 'faker'
-
+gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.2'
 # Use postgresql as the database for Active Record
