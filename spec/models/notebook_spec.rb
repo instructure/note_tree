@@ -8,15 +8,28 @@ describe Notebook do
  #    	@notebook = Notebook.new
  #  	end
 
-	it "should validate presence of title" do
-		 validate_presence_of :title
+	it "should validate presence of date" do
+		notebook = Notebook.new({
+			title: "lalatoday",
+			text: "tacos!"
+			})
+
+		expect{ notebook.save! }.to raise_error
 	end
 
-	it "should validate presence of date" do
-		 validate_presence_of :date
+	it "should validate presence of title" do
+		notebook = Notebook.new({
+			date: Date.today,
+			text: "tacos!"
+			})
+		expect{ notebook.save! }.to raise_error
 	end 
 
 	it "should validate presence of text" do
-		 validate_presence_of :text
+		 notebook = Notebook.new({
+			title: "text",
+			date: "tacos!"
+			})
+		 expect{ notebook.save! }.to raise_error
 	end
 end 
