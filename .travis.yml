@@ -5,3 +5,5 @@ addons:
   postgresql: "9.3"
 before_script:
   - psql -c 'create database note_tree_test;' -U postgres
+notifications:
+  slack: instructure:cbuxWNxigioaDxs40qPDwDFq
