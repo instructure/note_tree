@@ -14,6 +14,12 @@
   <strong>Title:</strong>
   <%= @notebook.title %>
 </p>
+<h2>versions</h2>
+<% @notebook.versions.each do |version| %>
+  <p>
+<%= version.event %>
 
+  </p> 
+<% end %> 
 <%= link_to 'Edit', edit_notebook_path(@notebook) %> |
 <%= link_to 'Back', notebooks_path %>
