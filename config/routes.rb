@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
   devise_for :accounts
-  resources :notebooks
-=======
+
+  resources :courses do
+    resources :lectures
+  end
+
   resources :notebooks do
     resources :versions, only: [:show]
   end
->>>>>>> 544bf0c0b40b5793034de98468fadfd875f9755d
 
   root to: "home#index"
 

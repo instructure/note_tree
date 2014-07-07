@@ -11,15 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20140703221902) do
-=======
-ActiveRecord::Schema.define(version: 20140703191817) do
->>>>>>> 544bf0c0b40b5793034de98468fadfd875f9755d
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
+ActiveRecord::Schema.define(version: 20140707163813) do
   create_table "accounts", force: true do |t|
     t.integer  "accountable_id"
     t.string   "accountable_type"
@@ -43,6 +35,16 @@ ActiveRecord::Schema.define(version: 20140703191817) do
   add_index "accounts", ["email"], name: "index_accounts_on_email", unique: true, using: :btree
   add_index "accounts", ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true, using: :btree
 
+  create_table "courses", force: true do |t|
+    t.string   "short_name"
+    t.string   "name"
+    t.text     "description"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "notebooks", force: true do |t|
     t.text     "text"
     t.date     "date"
@@ -51,7 +53,6 @@ ActiveRecord::Schema.define(version: 20140703191817) do
     t.datetime "updated_at"
   end
 
-<<<<<<< HEAD
   create_table "students", force: true do |t|
     t.integer "accountable_id"
     t.string  "accountable_type"
@@ -61,7 +62,7 @@ ActiveRecord::Schema.define(version: 20140703191817) do
     t.integer "accountable_id"
     t.string  "accountable_type"
   end
-=======
+
   create_table "versions", force: true do |t|
     t.string   "item_type",  null: false
     t.integer  "item_id",    null: false
@@ -72,6 +73,4 @@ ActiveRecord::Schema.define(version: 20140703191817) do
   end
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
->>>>>>> 544bf0c0b40b5793034de98468fadfd875f9755d
-
 end
