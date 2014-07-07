@@ -17,7 +17,7 @@
 <h2>versions</h2>
 <% @notebook.versions.each do |version| %>
   <p>
-<%= version.event %>
+<%= link_to 'View version',  notebook_version_path(@notebook, version) %>
 
   </p> 
 <% end %> 

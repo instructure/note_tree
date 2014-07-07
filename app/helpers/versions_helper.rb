@@ -1,2 +1,2 @@
-module VersionsControllerHelper
+module VersionsHelper
 end
