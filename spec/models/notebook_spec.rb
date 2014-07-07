@@ -2,7 +2,6 @@
 require 'spec_helper'
 require 'rails_helper'
 
-
 describe Notebook do
 	# before do
  #    	@notebook = Notebook.new
