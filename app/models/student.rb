@@ -1,3 +1,3 @@
-class Student < ActiveRecord::Base
-	belongs_to :account
+class Student < ActiveRecord::Base 
+  belongs_to :account
 end
