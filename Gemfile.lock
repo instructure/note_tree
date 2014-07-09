@@ -65,7 +65,13 @@ GEM
     mime-types (1.25.1)
     minitest (5.3.5)
     multi_json (1.10.1)
+<<<<<<< HEAD
     orm_adapter (0.5.0)
+=======
+    paper_trail (3.0.3)
+      activerecord (>= 3.0, < 5.0)
+      activesupport (>= 3.0, < 5.0)
+>>>>>>> 544bf0c0b40b5793034de98468fadfd875f9755d
     pg (0.17.1)
     polyglot (0.3.5)
     rack (1.5.2)
@@ -150,6 +156,7 @@ DEPENDENCIES
   faker
   jbuilder (~> 2.0)
   jquery-rails
+  paper_trail (~> 3.0.3)
   pg
   rails (= 4.1.2)
   rspec-rails (~> 3.0.0)

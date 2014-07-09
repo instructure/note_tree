@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20140703221902) do
+=======
+ActiveRecord::Schema.define(version: 20140703191817) do
+>>>>>>> 544bf0c0b40b5793034de98468fadfd875f9755d
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +51,7 @@ ActiveRecord::Schema.define(version: 20140703221902) do
     t.datetime "updated_at"
   end
 
+<<<<<<< HEAD
   create_table "students", force: true do |t|
     t.integer "accountable_id"
     t.string  "accountable_type"
@@ -56,5 +61,17 @@ ActiveRecord::Schema.define(version: 20140703221902) do
     t.integer "accountable_id"
     t.string  "accountable_type"
   end
+=======
+  create_table "versions", force: true do |t|
+    t.string   "item_type",  null: false
+    t.integer  "item_id",    null: false
+    t.string   "event",      null: false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+  end
+
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
+>>>>>>> 544bf0c0b40b5793034de98468fadfd875f9755d
 
 end
