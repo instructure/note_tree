@@ -1,0 +1,7 @@
+language: ruby
+rvm:
+  - 2.1.1
+addons:
+  postgresql: "9.3"
+before_script:
+  - psql -c 'create database note_tree_test;' -U postgres
