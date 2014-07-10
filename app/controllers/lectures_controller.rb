@@ -5,7 +5,7 @@ class LecturesController < ApplicationController
   # GET /lectures
   # GET /lectures.json
   def index
-    @lectures = Lecture.all
+    @lectures = Lecture.where(course: @course)
   end
 
   # GET /lectures/1
@@ -31,7 +31,7 @@ class LecturesController < ApplicationController
     @courses = Course.all
     respond_to do |format|
       if @lecture.save
-        format.html { redirect_to @lecture, notice: 'Lecture was successfully created.' }
+        format.html { redirect_to course_lecture_path(@course, @lecture), notice: 'Lecture was successfully created.' }
         format.json { render :show, status: :created, location: @lecture }
       else
         format.html { render :new }
