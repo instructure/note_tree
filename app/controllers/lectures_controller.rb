@@ -16,10 +16,12 @@ class LecturesController < ApplicationController
   # GET /lectures/new
   def new
     @lecture = Lecture.new
+    @courses = Course.all.collect {|course| ["#{course.name}", course.id]}
   end
 
   # GET /lectures/1/edit
   def edit
+     @courses = Course.all.collect {|course| ["#{course.name}", course.id]}
   end
 
   # POST /lectures
