@@ -1,5 +1,6 @@
 class LecturesController < ApplicationController
   before_action :set_lecture, only: [:show, :edit, :update, :destroy]
+  before_action :set_course
 
   # GET /lectures
   # GET /lectures.json
@@ -11,6 +12,7 @@ class LecturesController < ApplicationController
   # GET /lectures/1
   # GET /lectures/1.json
   def show
+
   end
 
   # GET /lectures/new
@@ -28,7 +30,7 @@ class LecturesController < ApplicationController
   # POST /lectures.json
   def create
     @lecture = Lecture.new(lecture_params)
-
+    @courses = Course.all
     respond_to do |format|
       if @lecture.save
         format.html { redirect_to @lecture, notice: 'Lecture was successfully created.' }
@@ -66,6 +68,10 @@ class LecturesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_course
+      @course = Course.find(params[:course_id])
+    end
+
     def set_lecture
       @lecture = Lecture.find(params[:id])
     end
