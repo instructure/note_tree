@@ -56,6 +56,27 @@ ActiveRecord::Schema.define(version: 20140707163813) do
 
   add_index "lectures", ["course_id"], name: "index_lectures_on_course_id", using: :btree
 
+  create_table "courses", force: true do |t|
+    t.string   "short_name"
+    t.string   "name"
+    t.text     "description"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lectures", force: true do |t|
+    t.integer  "course_id"
+    t.date     "date"
+    t.string   "title"
+    t.text     "summary"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "lectures", ["course_id"], name: "index_lectures_on_course_id", using: :btree
+
   create_table "notebooks", force: true do |t|
     t.text     "text"
     t.date     "date"
