@@ -44,7 +44,7 @@ class LecturesController < ApplicationController
   def update
     respond_to do |format|
       if @lecture.update(lecture_params)
-        format.html { redirect_to @lecture, notice: 'Lecture was successfully updated.' }
+        format.html { redirect_to course_lecture_path(@course, @lecture), notice: 'Lecture was successfully updated.' }
         format.json { render :show, status: :ok, location: @lecture }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class LecturesController < ApplicationController
   def destroy
     @lecture.destroy
     respond_to do |format|
-      format.html { redirect_to lectures_url, notice: 'Lecture was successfully destroyed.' }
+      format.html { redirect_to course_lectures_url(@course), notice: 'Lecture was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
