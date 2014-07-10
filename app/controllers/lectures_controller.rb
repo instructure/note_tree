@@ -16,19 +16,18 @@ class LecturesController < ApplicationController
   # GET /lectures/new
   def new
     @lecture = Lecture.new
-    @courses = Course.all.collect {|course| ["#{course.name}", course.id]}
   end
 
   # GET /lectures/1/edit
   def edit
-     @courses = Course.all.collect {|course| ["#{course.name}", course.id]}
   end
 
   # POST /lectures
   # POST /lectures.json
   def create
     @lecture = Lecture.new(lecture_params)
-    @courses = Course.all
+    @lecture.course = @course
+
     respond_to do |format|
       if @lecture.save
         format.html { redirect_to course_lecture_path(@course, @lecture), notice: 'Lecture was successfully created.' }
