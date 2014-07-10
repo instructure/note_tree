@@ -5,6 +5,7 @@ class LecturesController < ApplicationController
   # GET /lectures.json
   def index
     @lectures = Lecture.all
+  
   end
 
   # GET /lectures/1
