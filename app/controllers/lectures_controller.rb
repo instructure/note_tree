@@ -6,13 +6,11 @@ class LecturesController < ApplicationController
   # GET /lectures.json
   def index
     @lectures = Lecture.all
-  
   end
 
   # GET /lectures/1
   # GET /lectures/1.json
   def show
-
   end
 
   # GET /lectures/new
