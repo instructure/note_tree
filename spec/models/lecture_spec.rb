@@ -1,5 +1,13 @@
 require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe Lecture, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Lecture do 
+  it "should validate presence of course" do
+    lecture = Lecture.new ({
+     
+     
+      })
+    expect{ lecture.save! }.to raise_error
+end
+
 end
