@@ -41,8 +41,11 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 #group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0'
-  #add rspec
-  gem 'paper_trail', '~> 3.0.3'
-  #add paper trail 
+gem 'rspec-rails', '~> 3.0.0'
+#add rspec
+gem 'paper_trail', '~> 3.0.3'
+#add paper trail 
+
+gem 'capybara'
+#add capybara
 #end
