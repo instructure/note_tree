@@ -8,6 +8,15 @@ describe Lecture do
      
       })
     expect{ lecture.save! }.to raise_error
-end
+  end
 
+  describe "#concat_id" do
+
+    it "returns a concatenated title and date" do
+      lecture = Lecture.new(title: "Heading")
+      lecture.stub(:date) {"7-14-14"}
+      expect(lecture.concat_id).to eq("Heading-7-14-14")
+    end
+
+  end
 end

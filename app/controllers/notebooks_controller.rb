@@ -16,7 +16,7 @@ class NotebooksController < ApplicationController
   def new
     @notebook = Notebook.new
     course = Course.find(params[:course_id])
-    @lectures = course.lectures.collect { |l| ["#{l.title}-#{l.date}", l.id]} 
+    @lectures  = course.values_for_lecture_ids
   end
 
   # GET /notebooks/1/edit
