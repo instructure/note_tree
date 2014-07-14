@@ -15,11 +15,14 @@ class NotebooksController < ApplicationController
   # GET /notebooks/new
   def new
     @notebook = Notebook.new
-    @courses = Course.all.collect {|c| ["#{c.start_date} - #{c.name}" , c.id]}
+    course = Course.find(params[:course_id])
+    @lectures = course.lectures.collect { |l| ["#{l.title}-#{l.date}", l.id]} 
   end
 
   # GET /notebooks/1/edit
   def edit
+    course = @notebook.lecture.course
+    @lectures = course.lectures.collect { |l| ["#{l.title}-#{l.date}", l.id]} 
   end
 
   # POST /notebooks
