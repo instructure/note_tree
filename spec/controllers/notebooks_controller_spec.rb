@@ -39,23 +39,23 @@ RSpec.describe NotebooksController, :type => :controller do
     }
   end
 
-  def create_course
-    @course = Course.create!(short_name: "Hello", name: "Hello Again", description: "Tacos!", start_date: Date.today, end_date: Date.today)
-  end
-
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # LecturesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  # describe "GET index" do
-  #   it "assigns all lectures as @lectures" do
-  #     create_course
-  #     lecture = Lecture.create! valid_attributes
-  #     get :index, {:course_id => @course.id}, valid_session
-  #     expect(assigns(:lectures)).to eq([lecture])
-  #   end
-  # end
+  describe "GET index" do
+    let(:notebook) {Notebook.new}
+    before do
+      Notebook.stub(:all) { [notebook] }
+    end
+
+    it "assigns all lectures as @lectures" do
+      get :index, {}, valid_session
+      expect(assigns(:notebooks)).to eq([notebook])
+    end
+
+  end
 
   # # describe "GET show" do
   #   it "assigns the requested lecture as @lecture" do
