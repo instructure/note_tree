@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Short name:</strong>
+  <%= @course.short_name %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @course.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @course.description %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @course.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @course.end_date %>
+</p>
+
+
+
+<%= link_to "Take Notes!", {:controller => "notebooks", :action => "new", :course_id => @course.id} %> |
+<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Add Lecture', new_course_lecture_path(@course) %>
+<%= link_to 'Back', courses_path %>

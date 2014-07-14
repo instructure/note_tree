@@ -15,10 +15,14 @@ class NotebooksController < ApplicationController
   # GET /notebooks/new
   def new
     @notebook = Notebook.new
+    course = Course.find(params[:course_id])
+    @lectures = course.lectures.collect { |l| ["#{l.title}-#{l.date}", l.id]} 
   end
 
   # GET /notebooks/1/edit
   def edit
+    course = @notebook.lecture.course
+    @lectures = course.lectures.collect { |l| ["#{l.title}-#{l.date}", l.id]} 
   end
 
   # POST /notebooks
@@ -28,6 +32,7 @@ class NotebooksController < ApplicationController
 
     respond_to do |format|
       if @notebook.save
+
         format.html { redirect_to @notebook, notice: 'Notebook was successfully created.' }
         format.json { render :show, status: :created, location: @notebook }
       else
@@ -41,6 +46,7 @@ class NotebooksController < ApplicationController
   # PATCH/PUT /notebooks/1.json
   def update
     respond_to do |format|
+   
       if @notebook.update(notebook_params)
         format.html { redirect_to @notebook, notice: 'Notebook was successfully updated.' }
         format.json { render :show, status: :ok, location: @notebook }
@@ -69,6 +75,6 @@ class NotebooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def notebook_params
-      params.require(:notebook).permit(:text, :date, :title)
+      params.require(:notebook).permit(:lecture_id, :text, :date, :title)
     end
 end
