@@ -4,31 +4,31 @@ RSpec.describe LecturesController, :type => :routing do
   describe "routing" do
 
     it "routes to #index" do
-      expect(:get => "/lectures").to route_to("lectures#index")
+      expect(:get => "/courses/1/lectures").to route_to("lectures#index", :course_id => "1")
     end
 
     it "routes to #new" do
-      expect(:get => "/lectures/new").to route_to("lectures#new")
+      expect(:get => "/courses/1/lectures/new").to route_to("lectures#new", :course_id => "1")
     end
 
     it "routes to #show" do
-      expect(:get => "/lectures/1").to route_to("lectures#show", :id => "1")
+      expect(:get => "/courses/1/lectures/1").to route_to("lectures#show", :course_id => "1", :id => "1")
     end
 
     it "routes to #edit" do
-      expect(:get => "/lectures/1/edit").to route_to("lectures#edit", :id => "1")
+      expect(:get => "/courses/1/lectures/1/edit").to route_to("lectures#edit", :course_id => "1", :id => "1")
     end
 
     it "routes to #create" do
-      expect(:post => "/lectures").to route_to("lectures#create")
+      expect(:post => "/courses/1/lectures").to route_to("lectures#create", :course_id => "1")
     end
 
     it "routes to #update" do
-      expect(:put => "/lectures/1").to route_to("lectures#update", :id => "1")
+      expect(:put => "/courses/1/lectures/1").to route_to("lectures#update", :course_id => "1", :id => "1")
     end
 
     it "routes to #destroy" do
-      expect(:delete => "/lectures/1").to route_to("lectures#destroy", :id => "1")
+      expect(:delete => "/courses/1/lectures/1").to route_to("lectures#destroy", :course_id => "1", :id => "1")
     end
 
   end
