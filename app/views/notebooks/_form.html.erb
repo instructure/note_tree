@@ -10,7 +10,9 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="field">
+    <%= f.select :lecture_id, @lectures %>
+  </div>
   <div class="field">
     <%= f.label :text %><br>
     <%= f.text_area :text %>

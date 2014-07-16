@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140703221902) do
+ActiveRecord::Schema.define(version: 20140711205413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,12 +39,34 @@ ActiveRecord::Schema.define(version: 20140703221902) do
   add_index "accounts", ["email"], name: "index_accounts_on_email", unique: true, using: :btree
   add_index "accounts", ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true, using: :btree
 
+  create_table "courses", force: true do |t|
+    t.string   "short_name"
+    t.string   "name"
+    t.text     "description"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lectures", force: true do |t|
+    t.integer  "course_id"
+    t.date     "date"
+    t.string   "title"
+    t.text     "summary"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "lectures", ["course_id"], name: "index_lectures_on_course_id", using: :btree
+
   create_table "notebooks", force: true do |t|
     t.text     "text"
     t.date     "date"
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "lecture_id"
   end
 
   create_table "students", force: true do |t|
