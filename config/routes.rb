@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "notebooks#index"
   devise_for :accounts
 
   resources :courses do
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   resources :notebooks do
     resources :versions, only: [:show]
   end
+
 
   # root to: "home#index"
 
