@@ -2,10 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "UserFlows", :type => :request do
   describe "GET /user_flows" do
-    # before :each do 
-    #   @user = Account.new
-
-    # end 
+    before :each do
+      @user = Account.create!(:email => 'user@example.com', :password => 'password')
+    end
 
     it "should sign up user" do
       sign_up_with 'valid@example.com', 'password', 'password'
@@ -33,9 +32,21 @@ RSpec.describe "UserFlows", :type => :request do
     end
 
     it "should sign in user" do
-      sign_in
+      visit '/accounts/sign_in'
+      fill_in 'Email', :with => 'user@example.com'
+      fill_in 'Password', :with => 'password'
+      click_button 'Sign in'
       expect(page).to have_content('New Notebook')
     end
+
+    # it 'User log out' do
+    #   # activate(@user)
+    #   # login(@user)
+    #   # logout(@user)
+    #   click_link 'Sign out'
+    #   expect(page).to have_content "Signed out successfully"
+    # end
+
 
     def sign_up_with(email, password, password_confirmation)
       visit('/accounts/sign_up')
@@ -45,12 +56,5 @@ RSpec.describe "UserFlows", :type => :request do
       click_button 'Sign up'
     end
 
-    def sign_in
-      user = Account.create!(:email => "test@example.com", :password => "password")
-      visit '/accounts/sign_in'
-      fill_in 'Email', with: user.email
-      fill_in 'Password', with: user.password
-      click_button 'Sign in'
-    end
   end 
 end
