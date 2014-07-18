@@ -2,10 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "UserFlows", :type => :request do
   describe "GET /user_flows" do
-    # it "works! (now write some real specs)" do
-    #   get user_flows_index_path
-    #   expect(response.status).to be(200)
-    # end
+    # before :each do 
+    #   @user = Account.new
+
+    # end 
+
     it "should sign up user" do
       sign_up_with 'valid@example.com', 'password', 'password'
       expect(page).to have_content('Welcome! You have signed up successfully.')
@@ -31,13 +32,25 @@ RSpec.describe "UserFlows", :type => :request do
       expect(page).to have_content("Sign in")
     end
 
+    it "should sign in user" do
+      sign_in
+      expect(page).to have_content('New Notebook')
+    end
+
     def sign_up_with(email, password, password_confirmation)
-      # visit new_account_registration_path
       visit('/accounts/sign_up')
       fill_in 'Email', with: email
       fill_in 'Password', with: password
       fill_in 'Password confirmation', with: password_confirmation
       click_button 'Sign up'
+    end
+
+    def sign_in
+      user = Account.create!(:email => "test@example.com", :password => "password")
+      visit '/accounts/sign_in'
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: user.password
+      click_button 'Sign in'
     end
   end 
 end
