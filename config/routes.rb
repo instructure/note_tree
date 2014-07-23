@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :accounts
-
+  root :to => "notebooks#index"
+  devise_for :accounts 
+  
   resources :courses do
     resources :lectures
   end
@@ -9,7 +10,8 @@ Rails.application.routes.draw do
     resources :versions, only: [:show]
   end
 
-  root to: "home#index"
+
+  # root to: "home#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
