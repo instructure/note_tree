@@ -18,8 +18,8 @@
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
 
-  <div><%= f.label :teacher_id %><br />
-  <%= f.check_box :teacher_id %></div>
+  <div><%= label_tag :teacher %><br />
+  <%= check_box_tag :teacher %></div>
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>
