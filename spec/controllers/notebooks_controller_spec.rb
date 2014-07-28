@@ -27,8 +27,8 @@ RSpec.describe NotebooksController, :type => :controller do
     {
       date: Date.tomorrow,
       title: "Title",
-      summary: "Summary",
-      course_id: @course.id
+      lecture_id: @lecture.id,
+      text: "text"
     }
   end
 
@@ -37,6 +37,24 @@ RSpec.describe NotebooksController, :type => :controller do
       date: Date.tomorrow,
       summary: "Summary"
     }
+  end
+
+  def course_variable
+    @course = Course.create({
+
+      short_name: "Short Course Name",
+      name: "Course Name",
+      description: "Course description",
+      start_date: Date.yesterday,
+      end_date: Date.tomorrow 
+      })
+    @lecture = Lecture.create({
+      course: @course,
+      date: Date.today, 
+      title: "lecture title", 
+      summary:"Lecture summary"
+
+      })
   end
 
   # This should return the minimal set of values that should be in the session
@@ -57,21 +75,12 @@ RSpec.describe NotebooksController, :type => :controller do
 
   end
 
-  # # describe "GET show" do
-  #   it "assigns the requested lecture as @lecture" do
-  #     create_course
-  #     lecture = Lecture.create! valid_attributes
-  #     get :show, {:course_id => @course.id, :id => lecture.to_param}, valid_session
-  #     expect(assigns(:lecture)).to eq(lecture)
-  #   end
-  # end
-
   describe "GET new" do
 
     let(:course) { Course.new(id: 1) }
     let(:lecture) { Lecture.new(id: 2, title: "Title") }
 
-    before do
+    before do                                   
       Course.stub(:find) { course }
       lecture.stub(:date) { "2014-07-14" }
       course.stub(:lectures) { [lecture] }
@@ -95,109 +104,74 @@ RSpec.describe NotebooksController, :type => :controller do
 
   end
 
-  # describe "GET edit" do
-  #   it "assigns the requested lecture as @lecture" do
-  #     create_course
-  #     lecture = Lecture.create! valid_attributes
-  #     get :edit, {:course_id => @course.id, :id => lecture.to_param}, valid_session
-  #     expect(assigns(:lecture)).to eq(lecture)
-  #   end
-  # end
+  describe "GET edit" do
+    
+    let(:course) { Course.new(id: 4) }
+    let(:lecture) { Lecture.new(id: 3, title: "this is also a title") }
+    let(:notebook) { Notebook.new }
+    let(:expected) { 
+      [
+        ["this is also a title-2014-08-14", 3]
+      ]
+    }
+    before do
+      Notebook.stub(:find) { notebook }
+      notebook.stub(:lecture) { lecture }
+      lecture.stub(:course) {course}
+      course.stub(:lectures) { [lecture] }
+      lecture.stub(:date) { "2014-08-14" }
+  
+    end
 
-  # describe "POST create" do
-  #   before do
-  #     create_course
-  #   end
+    it "collects lectures and assigns titles and dates @lecture" do
+     get :edit, {id: 1}, valid_session
+     expect(assigns(:lectures)).to eq(expected)
+  
+    end
+  
+  end
 
-  #   describe "with valid params" do
-  #     it "creates a new Lecture" do
-  #       expect {
-  #         post :create, {:course_id => @course.id, :lecture => valid_attributes}, valid_session
-  #       }.to change(Lecture, :count).by(1)
-  #     end
+    describe "POST create" do
+      let(:notebook) { Notebook.new(id: 1) }
+      before do
+        course_variable
+       end
 
-  #     it "assigns a newly created lecture as @lecture" do
-  #       post :create, {:course_id => @course.id, :lecture => valid_attributes}, valid_session
-  #       expect(assigns(:lecture)).to be_a(Lecture)
-  #       expect(assigns(:lecture)).to be_persisted
-  #     end
+    describe "with valid params" do
 
-  #     it "redirects to the created lecture" do
-  #       post :create, {:course_id => @course.id, :lecture => valid_attributes}, valid_session
-  #       lecture = Lecture.last
-  #       expect(response).to redirect_to(course_lecture_path(@course, lecture))
-  #     end
-  #   end
+      it "is successful" do
+        post :create, {notebook: { text: 'ohai'} }
+        expect(response).to be_successful
+      end
+      it "creates a new Notebook" do
+         expect { 
+         post :create, {:notebook => valid_attributes}, valid_session
+         }.to change(Notebook, :count).by(1)
+      end
+      it "redirects to the new notebook path" do
+        post :create, {:notebook => valid_attributes}, valid_session
+        notebook_id = Notebook.last.id
+        expect(response).to redirect_to(notebook_path(notebook_id))
+      end
+       it "assigns a newly created lecture as @lecture" do
+        #post :create, {:notebook => :lecture => valid_attributes}, valid_session
+        #lecture_id = Lecture.last.id
+        #expect(assigns(:notebook)).to be_in_a(Notebook)
+      #   #expect(response).to redirect_to(notebook_path(notebook_id))
+        # expect(assigns(:notebook)).to be_persisted
+        end
+      end
+    end
 
-  #   describe "with invalid params" do
-  #     it "assigns a newly created but unsaved lecture as @lecture" do
-  #       post :create, {:course_id => @course.id, :lecture => invalid_attributes}, valid_session
-  #       expect(assigns(:lecture)).to be_a_new(Lecture)
-  #     end
-
-  #     it "re-renders the 'new' template" do
-  #       post :create, {:course_id => @course.id, :lecture => invalid_attributes}, valid_session
-  #       expect(response).to render_template("new")
-  #     end
-  #   end
-  # end
-
-  # describe "PUT update" do
-  #   before do
-  #     create_course
-  #   end
-
-  #   describe "with valid params" do
-  #     let(:new_attributes) {
-  #       skip("Add a hash of attributes valid for your model")
-  #     }
-
-  #     it "updates the requested lecture" do
-  #       lecture = Lecture.create! valid_attributes
-  #       put :update, {:course_id => @course.id, :id => lecture.to_param, :lecture => new_attributes}, valid_session
-  #       lecture.reload
-  #       skip("Add assertions for updated state")
-  #     end
-
-  #     it "assigns the requested lecture as @lecture" do
-  #       lecture = Lecture.create! valid_attributes
-  #       put :update, {:course_id => @course.id, :id => lecture.to_param, :lecture => valid_attributes}, valid_session
-  #       expect(assigns(:lecture)).to eq(lecture)
-  #     end
-
-  #     it "redirects to the lecture" do
-  #       lecture = Lecture.create! valid_attributes
-  #       put :update, {:course_id => @course.id, :id => lecture.to_param, :lecture => valid_attributes}, valid_session
-  #       expect(response).to redirect_to(course_lecture_path(@course, lecture))
-  #     end
-  #   end
-
-  #   describe "with invalid params" do
-  #     it "assigns the lecture as @lecture" do
-  #       lecture = Lecture.create! valid_attributes
-  #       put :update, {:course_id => @course.id, :id => lecture.to_param, :lecture => invalid_attributes}, valid_session
-  #       expect(assigns(:lecture)).to eq(lecture)
-  #     end
-  #   end
-  # end
-
-  # describe "DELETE destroy" do
-  #   before do
-  #     create_course
-  #   end
-
-  #   it "destroys the requested lecture" do
-  #     lecture = Lecture.create! valid_attributes
-  #     expect {
-  #       delete :destroy, {:course_id => @course.id, :id => lecture.to_param}, valid_session
-  #     }.to change(Lecture, :count).by(-1)
-  #   end
-
-  #   it "redirects to the lectures list" do
-  #     lecture = Lecture.create! valid_attributes
-  #     delete :destroy, {:course_id => @course.id, :id => lecture.to_param}, valid_session
-  #     expect(response).to redirect_to(course_lectures_url(@course))
-  #   end
-  # end
-
+   describe "DELETE destroy" do
+  #  notebook = Notebook.create! course_variable
+ 
+   it "destroys the requested notebook" do
+      course_variable
+      notebook = Notebook.create(valid_attributes)
+       expect {
+         delete :destroy, { :id => notebook}, valid_session
+       }.to change(Notebook, :count).by(-1)
+        end
+    end
 end

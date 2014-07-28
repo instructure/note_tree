@@ -46,6 +46,7 @@ group :development, :test do
   gem 'paper_trail', '~> 3.0.3'
   #add paper trail 
   gem 'better_errors'
+  gem 'debugger'
   gem 'binding_of_caller'
   gem 'simplecov', :require => false
 end

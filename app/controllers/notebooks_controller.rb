@@ -10,6 +10,7 @@ class NotebooksController < ApplicationController
   # GET /notebooks/1
   # GET /notebooks/1.json
   def show
+
   end
 
   # GET /notebooks/new
@@ -22,22 +23,23 @@ class NotebooksController < ApplicationController
   # GET /notebooks/1/edit
   def edit
     course = @notebook.lecture.course
-    @lectures = course.lectures.collect { |l| ["#{l.title}-#{l.date}", l.id]} 
+    @lectures  = course.values_for_lecture_ids  
   end
 
   # POST /notebooks
   # POST /notebooks.json
   def create
     @notebook = Notebook.new(notebook_params)
-
+    #debugger
     respond_to do |format|
       if @notebook.save
 
         format.html { redirect_to @notebook, notice: 'Notebook was successfully created.' }
-        format.json { render :show, status: :created, location: @notebook }
+        #format.json { render :show, status: :created, location: @notebook }
       else
+        #debugger
         format.html { render :new }
-        format.json { render json: @notebook.errors, status: :unprocessable_entity }
+        #format.json { render json: @notebook.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -49,10 +51,10 @@ class NotebooksController < ApplicationController
    
       if @notebook.update(notebook_params)
         format.html { redirect_to @notebook, notice: 'Notebook was successfully updated.' }
-        format.json { render :show, status: :ok, location: @notebook }
+        #format.json { render :show, status: :ok, location: @notebook }
       else
         format.html { render :edit }
-        format.json { render json: @notebook.errors, status: :unprocessable_entity }
+        #format.json { render json: @notebook.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -63,7 +65,7 @@ class NotebooksController < ApplicationController
     @notebook.destroy
     respond_to do |format|
       format.html { redirect_to notebooks_url, notice: 'Notebook was successfully destroyed.' }
-      format.json { head :no_content }
+      #format.json { head :no_content }
     end
   end
 
