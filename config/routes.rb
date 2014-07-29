@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root :to => "notebooks#index"
-  devise_for :accounts 
-  
+  devise_for :accounts, :controllers => { :registrations => "registrations" }
+
   resources :courses do
     resources :lectures
   end

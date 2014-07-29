@@ -11,14 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140711205413) do
+ActiveRecord::Schema.define(version: 20140728182958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accounts", force: true do |t|
-    t.integer  "accountable_id"
-    t.string   "accountable_type"
     t.string   "password"
     t.string   "password_confirmation"
     t.string   "first_name"
@@ -34,6 +32,8 @@ ActiveRecord::Schema.define(version: 20140711205413) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "student_id"
+    t.integer  "teacher_id"
   end
 
   add_index "accounts", ["email"], name: "index_accounts_on_email", unique: true, using: :btree
@@ -70,13 +70,11 @@ ActiveRecord::Schema.define(version: 20140711205413) do
   end
 
   create_table "students", force: true do |t|
-    t.integer "accountable_id"
-    t.string  "accountable_type"
+    t.integer "account_id"
   end
 
   create_table "teachers", force: true do |t|
-    t.integer "accountable_id"
-    t.string  "accountable_type"
+    t.integer "account_id"
   end
 
   create_table "versions", force: true do |t|
