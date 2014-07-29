@@ -48,7 +48,11 @@ GEM
     coffee-script (2.3.0)
       coffee-script-source
       execjs
+<<<<<<< HEAD
     coffee-script-source (1.7.1)
+=======
+    coffee-script-source (1.7.0)
+>>>>>>> lectures
     columnize (0.8.9)
     debug_inspector (0.0.2)
     debugger (1.6.8)

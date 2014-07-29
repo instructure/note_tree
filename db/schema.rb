@@ -13,6 +13,7 @@
 
 
 # ActiveRecord::Schema.define(version: 20140728182958) do
+
 ActiveRecord::Schema.define(version: 20140714153205) do
 
   # These are extensions that must be enabled in order to support this database

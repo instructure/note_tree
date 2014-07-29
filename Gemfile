@@ -71,3 +71,13 @@ gem 'binding_of_caller'
 gem 'simplecov', :require => false
 # end
 
+# group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0'
+  #add rspec
+  gem 'paper_trail', '~> 3.0.3'
+  #add paper trail 
+  gem 'better_errors'
+  gem 'debugger'
+  gem 'binding_of_caller'
+  gem 'simplecov', :require => false
+# end
