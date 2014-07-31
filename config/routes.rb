@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root :to => "notebooks#index"
+  root :to => "courses#index"
   devise_for :accounts, :controllers => { :registrations => "registrations" }
 
   resources :courses do
@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :notebooks do
     resources :versions, only: [:show]
+    resources :comments
   end
 
 
