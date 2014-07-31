@@ -1,5 +1,5 @@
 class NotebooksController < ApplicationController
-  before_action :authenticate_account! 
+  # before_action :authenticate_account! 
   before_action :set_notebook, only: [:show, :edit, :update, :destroy]
 
   # GET /notebooks
