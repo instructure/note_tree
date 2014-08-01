@@ -78,6 +78,6 @@ class NotebooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def notebook_params
-      params.require(:notebook).permit(:lecture_id, :text, :date, :title)
+      params.require(:notebook).permit(:lecture_id, :text, :title)
     end
 end
