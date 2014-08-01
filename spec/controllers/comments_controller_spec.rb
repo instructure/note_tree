@@ -7,7 +7,7 @@ login_user
   # Comment. As you add validations to Course, be sure to
   # adjust the attributes here as well.
   let(:notebook){
-    Notebook.create!(title: "Notebook", text: "This is a notebook", date: Date.today, lecture: lecture)
+    Notebook.create!(title: "Notebook", text: "This is a notebook", lecture: lecture)
   }
 
   let(:course){
