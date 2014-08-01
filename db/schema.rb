@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140728182958) do
+ActiveRecord::Schema.define(version: 20140801165050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(version: 20140728182958) do
 
   create_table "notebooks", force: true do |t|
     t.text     "text"
-    t.date     "date"
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -27,7 +27,7 @@ RSpec.describe NotebooksController, :type => :controller do
 
   def valid_attributes
     {
-      date: Date.tomorrow,
+    
       title: "Title",
       lecture_id: @lecture.id,
       text: "text"
@@ -36,7 +36,7 @@ RSpec.describe NotebooksController, :type => :controller do
 
   def invalid_attributes
     {
-      date: Date.tomorrow,
+     
       summary: "Summary"
     }
   end
@@ -47,12 +47,11 @@ RSpec.describe NotebooksController, :type => :controller do
       short_name: "Short Course Name",
       name: "Course Name",
       description: "Course description",
-      start_date: Date.yesterday,
-      end_date: Date.tomorrow 
+     
       })
     @lecture = Lecture.create({
       course: @course,
-      date: Date.today, 
+  
       title: "lecture title", 
       summary:"Lecture summary"
 
