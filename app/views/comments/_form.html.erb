@@ -1,8 +1,4 @@
-<%= form_for([@notebook, @notebook.comments.build]) do |f| %>
-  <p>
-    <%= f.label :commenter %><br>
-    <%= f.text_field :commenter %>
-  </p>
+<%= form_for([@notebook, @comment]) do |f| %>
   <p>
     <%= f.label :body %><br>
     <%= f.text_area :body %>

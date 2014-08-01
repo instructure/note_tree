@@ -9,11 +9,11 @@ RSpec.describe Comment, :type => :model do
     expect{ comment.save! }.to raise_error
   end
   
-  it "should validate presence of commenter" do
-    comment = Comment.new({
-      commenter: ""
-    })
-    expect{ comment.save! }.to raise_error
-  end
+  # it "should validate presence of commenter" do
+  #   comment = Comment.new({
+  #     commenter: ""
+  #   })
+  #   expect{ comment.save! }.to raise_error
+  # end
 
 end
