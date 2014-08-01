@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 20140801165050) do
   add_index "accounts", ["email"], name: "index_accounts_on_email", unique: true, using: :btree
   add_index "accounts", ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true, using: :btree
 
+  create_table "comments", force: true do |t|
+    t.string   "commenter"
+    t.text     "body"
+    t.integer  "notebook_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["notebook_id"], name: "index_comments_on_notebook_id", using: :btree
+
   create_table "courses", force: true do |t|
     t.string   "short_name"
     t.string   "name"

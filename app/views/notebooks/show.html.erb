@@ -16,6 +16,13 @@
 
   </p> 
 <% end %> 
-<%= link_to 'Edit', edit_notebook_path(@notebook) %> |
-<%= link_to 'Back', notebooks_path %>
 
+<h2>Comments</h2>
+<%= render @notebook.comments %> 
+
+<h2>Add a comment:</h2>
+<%= render "comments/form" %>
+
+ 
+<%= link_to 'Back', notebook_path %>
+| <%= link_to 'Edit', edit_notebook_path(@notebook) %>

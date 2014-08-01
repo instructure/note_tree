@@ -1,5 +1,6 @@
 class Notebook < ActiveRecord::Base
 	validates :text, :title, presence: true
+	has_many :comments
   validates :title, length: {within: 1..100}
 
   has_paper_trail

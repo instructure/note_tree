@@ -22,6 +22,5 @@ RSpec.describe "UserType", :type => :request do
       @account = Account.create!(:student => Student.create, :email => "test@example.com", :password => "password")
       expect(@account.teacher?).to eq(false)
     end
-
   end
 end
