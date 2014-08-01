@@ -1,7 +1,7 @@
 require 'capybara/rspec'  
 require_relative "support/controller_macros"
 require 'devise'
-
+require 'pry'
 require 'simplecov'
 SimpleCov.start
 
