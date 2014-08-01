@@ -20,7 +20,6 @@ login_user
 
   let(:valid_attributes) {
     {
-      "commenter" => "Colleen",
       "body" => "This is a comment.",
       "notebook" => notebook
     }
@@ -28,8 +27,7 @@ login_user
 
   let(:invalid_attributes) {
     {
-      "commenter" => "",
-      "body" => "This is a comment.",
+      "body" => "",
       "notebook" => notebook
     }
   }
