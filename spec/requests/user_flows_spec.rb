@@ -39,12 +39,25 @@ RSpec.describe "UserFlows", :type => :request do
       expect(page).to have_content('New Notebook')
     end
 
+    it 'should sign out user' do
+      sign_in("user@example.com", "password")
+      click_link 'Logout'
+      expect(page).to have_content('Sign in')
+    end 
+
     def sign_up_with(email, password, password_confirmation)
       visit('/accounts/sign_up')
       fill_in 'Email', with: email
       fill_in 'Password', with: password
       fill_in 'Password confirmation', with: password_confirmation
       click_button 'Sign up'
+    end
+
+    def sign_in(email, password)
+      visit '/accounts/sign_in'
+      fill_in 'Email', :with => 'user@example.com'
+      fill_in 'Password', :with => 'password'
+      click_button 'Sign in'
     end
 
   end 
