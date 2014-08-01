@@ -51,7 +51,7 @@ gem 'capybara'
   gem 'paper_trail', '~> 3.0.3'
   #add paper trail 
   gem 'better_errors'
-  # gem 'debugger'
+  gem 'pry'
   gem 'binding_of_caller'
   gem 'simplecov', :require => false
 # end
