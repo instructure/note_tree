@@ -61,15 +61,25 @@ login_user
     end
 
     describe "with invalid params" do
-      it "assigns a newly created but unsaved course as @course" do
-        post :create, {:course => invalid_attributes}, valid_session
-        expect(assigns(:course)).to be_a_new(Course)
+      it "redirects to Notebook" do
+        post :create, {:notebook_id => notebook, :comment => invalid_attributes}, valid_session
+        expect(response).to redirect_to(Notebook.last)
       end
+    end
+  end
 
-      it "re-renders the 'new' template" do
-        post :create, {:course => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
-      end
+  describe "DELETE destroy" do
+    it "destroys the requested  comment" do
+      comment = Comment.create! valid_attributes
+      expect {
+        delete :destroy, {:notebook_id => notebook, :id => comment.to_param}, valid_session
+      }.to change(Comment, :count).by(-1)
+    end
+
+    it "redirects to the notebook list" do
+      comment = Comment.create! valid_attributes
+      delete :destroy, {:notebook_id => notebook, :id => comment.to_param}, valid_session
+      expect(response).to redirect_to(Notebook.last)
     end
   end
 
