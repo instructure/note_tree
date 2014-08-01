@@ -25,11 +25,22 @@ RSpec.describe CoursesController, :type => :controller do
   # Course. As you add validations to Course, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+      "short_name" => "Course",
+      "name" => "My super awesome fancy course.",
+      "description" => "Course information.",
+      "start_date" => Date.today,
+      "end_date" => Date.tomorrow
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+      "short_name" => "Course with a really long short name that should not work",
+      "name" => "My super awesome fancy course.",
+      "description" => "Course information.",
+      "start_date" => Date.today
+    }   
   }
 
   # This should return the minimal set of values that should be in the session
@@ -130,6 +141,7 @@ RSpec.describe CoursesController, :type => :controller do
     describe "with invalid params" do
       it "assigns the course as @course" do
         course = Course.create! valid_attributes
+        course.short_name = ""
         put :update, {:id => course.to_param, :course => invalid_attributes}, valid_session
         expect(assigns(:course)).to eq(course)
       end
