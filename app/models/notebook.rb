@@ -1,5 +1,5 @@
 class Notebook < ActiveRecord::Base
-	has_many :comments
+	has_many :comments, dependent: :destroy
   validates :text, :date, :title, presence: true
   validates :title, length: {within: 1..100}
 
