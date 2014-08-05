@@ -4,10 +4,11 @@ class Account < ActiveRecord::Base
 
   belongs_to :student 
   belongs_to :teacher
+  has_many :comments
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
+ 
   #user method for getting the id and returning if it's a student or teacher --> boolean 
   #account.student? --> should return boolean 
 
@@ -17,5 +18,9 @@ class Account < ActiveRecord::Base
 
   def teacher?
     teacher_id? 
+  end
+
+  def full_name
+    "#{self.first_name} #{self.last_name}"
   end
 end

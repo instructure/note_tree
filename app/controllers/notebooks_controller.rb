@@ -11,7 +11,7 @@ class NotebooksController < ApplicationController
   # GET /notebooks/1
   # GET /notebooks/1.json
   def show
-
+    @comment = Comment.new
   end
 
   # GET /notebooks/new
