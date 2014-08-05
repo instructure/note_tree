@@ -22,7 +22,5 @@ class Account < ActiveRecord::Base
 
   def full_name
     "#{self.first_name} #{self.last_name}"
-    # "hello"
-    # "#{self.first_name}"
   end
 end

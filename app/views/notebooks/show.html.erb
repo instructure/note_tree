@@ -9,7 +9,7 @@
   <strong>Title:</strong>
   <%= @notebook.title %>
 </p>
-<h2>versions</h2>
+<h2>Versions</h2>
 <% @notebook.versions.each do |version| %>
   <p>
 <%= link_to 'View version',  notebook_version_path(@notebook, version) %>
