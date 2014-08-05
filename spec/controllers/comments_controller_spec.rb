@@ -39,7 +39,18 @@ login_user
 
 
   describe "POST create" do
+    # before :each do
+    #   @user = Account.create!(:email => 'user@example.com', :password => 'password', 
+    #     :first_name => "Bob", :last_name => "Miller")
+    # end
+
     describe "with valid params" do
+      
+      # it "should assign user as commenter" do
+      #   post :create, {:notebook_id => notebook, :comment => valid_attributes}, valid_session
+      #   expect(page).to have_content('Sign ')
+      # end
+
       it "creates a new Comment" do
         expect {
           post :create, {:notebook_id => notebook, :comment => valid_attributes}, valid_session
