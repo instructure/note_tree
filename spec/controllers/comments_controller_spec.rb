@@ -47,11 +47,6 @@ login_user
 
 
   describe "POST create" do
-    # before :each do
-    #   @user = Account.create!(:email => 'user@example.com', :password => 'password', 
-    #     :first_name => "Bob", :last_name => "Miller")
-    # end
-
     describe "with valid params" do
       it "creates a new Comment" do
         expect {
@@ -69,6 +64,11 @@ login_user
         post :create, {:notebook_id => notebook, :comment => valid_attributes}, valid_session
         expect(response).to redirect_to(Notebook.last)
       end
+
+      it 'assigns user as commenter' do
+        @comment = Comment.create! valid_attributes
+        expect(@comment.account).to be_a(Account)
+      end 
     end
 
     describe "with invalid params" do
