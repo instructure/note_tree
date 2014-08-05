@@ -45,12 +45,6 @@ login_user
     # end
 
     describe "with valid params" do
-      
-      # it "should assign user as commenter" do
-      #   post :create, {:notebook_id => notebook, :comment => valid_attributes}, valid_session
-      #   expect(page).to have_content('Sign ')
-      # end
-
       it "creates a new Comment" do
         expect {
           post :create, {:notebook_id => notebook, :comment => valid_attributes}, valid_session
