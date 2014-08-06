@@ -23,8 +23,13 @@ class NotebooksController < ApplicationController
 
   # GET /notebooks/1/edit
   def edit
-    course = @notebook.lecture.course
-    @lectures  = course.values_for_lecture_ids  
+    if current_account == @notebook.account 
+      course = @notebook.lecture.course
+      @lectures  = course.values_for_lecture_ids  
+      render :edit
+    else
+      render "shared/error"
+    end
   end
 
   # POST /notebooks
