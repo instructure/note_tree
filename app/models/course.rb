@@ -1,5 +1,8 @@
 class Course < ActiveRecord::Base
   has_many :lectures
+  has_many :students
+  has_many :teachers
+
   validates :short_name, :name, :start_date, :end_date, :description, presence: true
   validates :short_name, length: {within: 1..10}
   validates :name, length: {within: 1..100}
