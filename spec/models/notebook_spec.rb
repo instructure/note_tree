@@ -1,10 +1,7 @@
-# require_relative '../spec_helper'
 require 'spec_helper'
 require 'rails_helper'
 
 describe Notebook do
-	# login_user
-
   let(:account){
     Account.create!(:email => 'user@example.com', :password => 'password', :password_confirmation => 'password', 
       :first_name => 'Colleen', :last_name => 'Masterson')
@@ -31,10 +28,10 @@ describe Notebook do
 	end 
 
 	it "should validate presence of text" do
-		 notebook = Notebook.new({
-			title: "text"
-			})
-		 expect{ notebook.save! }.to raise_error
+		notebook = Notebook.new({
+		title: "text"
+		})
+		expect{ notebook.save! }.to raise_error
 	end
 
 	it "should show comments for current notebook version" do
