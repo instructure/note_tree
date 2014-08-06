@@ -18,7 +18,9 @@
 <% end %> 
 
 <%= link_to 'Back', notebooks_path %>
+<% if current_account == @notebook.account %>
 | <%= link_to 'Edit', edit_notebook_path(@notebook) %>
+<% end %>
 
 <h2>Comments</h2>
 <%= render @notebook.version_comments %> 
