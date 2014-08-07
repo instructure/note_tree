@@ -23,14 +23,21 @@ RSpec.describe NotebooksController, :type => :controller do
   # This should return the minimal set of attributes required to create a valid
   # Lecture. As you add validations to Lecture, be sure to
   # adjust the attributes here as well.
-  login_user
+  @user = login_student
+
+  # let(:account){
+  #   Account.create!(:email => 'user@example.com', :password => 'password', :password_confirmation => 'password', 
+  #     :first_name => 'Collen', :last_name => 'Masterson', :student_id => 1)
+  # }
+
 
   def valid_attributes
     {
     
       title: "Title",
       lecture_id: @lecture.id,
-      text: "text"
+      text: "text",
+      # account_id: account
     }
   end
 
@@ -106,10 +113,10 @@ RSpec.describe NotebooksController, :type => :controller do
   end
 
   describe "GET edit" do
-    
+    # let(:account) {Account.new(student_id: 1)}
     let(:course) { Course.new(id: 4) }
     let(:lecture) { Lecture.new(id: 3, title: "this is also a title") }
-    let(:notebook) { Notebook.new }
+    let(:notebook) { Notebook.new()}
     let(:expected) { 
       [
         ["this is also a title-2014-08-14", 3]
@@ -117,19 +124,26 @@ RSpec.describe NotebooksController, :type => :controller do
     }
     before do
       Notebook.stub(:find) { notebook }
+      notebook.stub(:account) { @user }
       notebook.stub(:lecture) { lecture }
       lecture.stub(:course) {course}
       course.stub(:lectures) { [lecture] }
       lecture.stub(:date) { "2014-08-14" }
-  
     end
 
-    it "collects lectures and assigns titles and dates @lecture" do
-     get :edit, {id: 1}, valid_session
-     expect(assigns(:lectures)).to eq(expected)
-  
+    it "allows the owner to edit the notebook" do
+      get :edit, {id: 1}, valid_session
+      expect(response).to be_successful
     end
-  
+
+
+    it "does not allow non-owners to edit the notebook" do
+      new_student = Student.create!
+      user = Account.create(:password => "Password_student", :password_confirmation => "Password_student", :email => "test@email.com", :student => new_student)
+      notebook.stub(:account) { user }
+      get :edit, {id: 1}, valid_session
+      expect(response).to render_template(:error)
+    end
   end
 
     describe "POST create" do

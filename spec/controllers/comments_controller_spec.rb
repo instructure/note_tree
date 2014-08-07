@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CommentsController, :type => :controller do
-login_user
+login_teacher
 
   # This should return the minimal set of attributes required to create a valid
   # Comment. As you add validations to Course, be sure to
