@@ -20,6 +20,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
+    render "shared/error" unless current_account.teacher?
   end
 
   # POST /courses

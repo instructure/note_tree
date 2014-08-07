@@ -15,11 +15,13 @@ class LecturesController < ApplicationController
 
   # GET /lectures/new
   def new
+    render "shared/error" unless current_account.teacher?
     @lecture = Lecture.new
   end
 
   # GET /lectures/1/edit
   def edit
+    render "shared/error" unless current_account.teacher?
   end
 
   # POST /lectures
