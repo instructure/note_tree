@@ -13,8 +13,13 @@
       <tr>
         <td><%= notebook.title %></td>
         <td><%= link_to 'Show', notebook %></td>
-        <td><%= link_to 'Edit', edit_notebook_path(notebook) %></td>
-        <td><%= link_to 'Destroy', notebook, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_account == notebook.account %>
+          <td><%= link_to 'Edit', edit_notebook_path(notebook) %></td>
+          <td><%= link_to 'Destroy', notebook, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+        <% if current_account.teacher? %>
+          <td><%= link_to 'Destroy', notebook, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Notebook', new_notebook_path %>
+

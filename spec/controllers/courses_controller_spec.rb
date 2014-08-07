@@ -19,7 +19,7 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe CoursesController, :type => :controller do
-  login_user
+  login_teacher
 
   # This should return the minimal set of attributes required to create a valid
   # Course. As you add validations to Course, be sure to

@@ -5,7 +5,7 @@ class Account < ActiveRecord::Base
   belongs_to :student 
   belongs_to :teacher
   has_many :comments
-
+  has_many :notebooks
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
  

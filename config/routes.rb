@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'files/index'
+
+  get 'files/new'
+
+  get 'files/create'
+
+  get 'files/destroy'
+
   root :to => "courses#index"
   devise_for :accounts, :controllers => { :registrations => "registrations" }
 

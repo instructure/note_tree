@@ -14,6 +14,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/new
   def new
+    render "shared/error" unless current_account.teacher?
     @course = Course.new
   end
 
@@ -25,7 +26,6 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(course_params)
-
     respond_to do |format|
       if @course.save
         format.html { redirect_to @course, notice: 'Course was successfully created.' }

@@ -23,14 +23,20 @@ class NotebooksController < ApplicationController
 
   # GET /notebooks/1/edit
   def edit
-    course = @notebook.lecture.course
-    @lectures  = course.values_for_lecture_ids  
+    if current_account == @notebook.account
+      course = @notebook.lecture.course
+      @lectures  = course.values_for_lecture_ids  
+      render :edit
+    else
+      render "shared/error"
+    end
   end
 
   # POST /notebooks
   # POST /notebooks.json
   def create
     @notebook = Notebook.new(notebook_params)
+    @notebook.account = current_account
     #debugger
     respond_to do |format|
       if @notebook.save
@@ -78,6 +84,6 @@ class NotebooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def notebook_params
-      params.require(:notebook).permit(:lecture_id, :text, :title)
+      params.require(:notebook).permit(:lecture_id, :text, :title, :account_id)
     end
 end

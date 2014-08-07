@@ -36,7 +36,7 @@ RSpec.describe "UserFlows", :type => :request do
       fill_in 'Email', :with => 'user@example.com'
       fill_in 'Password', :with => 'password'
       click_button 'Sign in'
-      expect(page).to have_content('New Course')
+      expect(page).to have_content('Listing courses')
     end
 
     it 'should sign out user' do

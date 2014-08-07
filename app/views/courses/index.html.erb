@@ -29,5 +29,6 @@
 </table>
 
 <br>
-
+<% if current_account.teacher? %>
 <%= link_to 'New Course', new_course_path %>
+<% end %>
