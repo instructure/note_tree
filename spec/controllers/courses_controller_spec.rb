@@ -19,8 +19,7 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe CoursesController, :type => :controller do
-  login_teacher
-
+  
   # This should return the minimal set of attributes required to create a valid
   # Course. As you add validations to Course, be sure to
   # adjust the attributes here as well.
@@ -48,7 +47,12 @@ RSpec.describe CoursesController, :type => :controller do
   # CoursesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  before :each do
+    @teacher = login_teacher
+  end
+
   describe "GET index" do
+
     it "assigns all courses as @courses" do
       course = Course.create! valid_attributes
       get :index, {}, valid_session
@@ -65,9 +69,15 @@ RSpec.describe CoursesController, :type => :controller do
   end
 
   describe "GET new" do
+
     it "assigns a new course as @course" do
       get :new, {}, valid_session
       expect(assigns(:course)).to be_a_new(Course)
+    end
+    it "Shouldn't let a student make a course" do
+      login_student
+      get :new, {}, valid_session
+      expect(response).to render_template(:error)
     end
   end
 

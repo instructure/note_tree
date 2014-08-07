@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-
+  before_action :ensure_teacher, except: [:index, :show]
   # GET /courses
   # GET /courses.json
   def index
@@ -14,13 +14,13 @@ class CoursesController < ApplicationController
 
   # GET /courses/new
   def new
-    render "shared/error" unless current_account.teacher?
+    
     @course = Course.new
   end
 
   # GET /courses/1/edit
   def edit
-    render "shared/error" unless current_account.teacher?
+
   end
 
   # POST /courses
@@ -72,4 +72,7 @@ class CoursesController < ApplicationController
     def course_params
       params.require(:course).permit(:short_name, :name, :description, :start_date, :end_date)
     end
+   def ensure_teacher
+    render "shared/error" unless current_account.teacher?
+   end
 end
