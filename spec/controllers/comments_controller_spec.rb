@@ -95,6 +95,16 @@ RSpec.describe CommentsController, :type => :controller do
       delete :destroy, {:notebook_id => notebook, :id => comment.to_param}, valid_session
       expect(response).to redirect_to(Notebook.last)
     end
+
+    it "does not allow student non-owners to delete a comment" do
+      comment = Comment.create! valid_attributes
+      new_student = Student.create!
+      student = Account.create(:password => "Password_student", :password_confirmation => "Password_student", :email => "test2@email.com", :student => new_student)    
+      sign_in student
+      delete :destroy, {:notebook_id => notebook, :id => comment.to_param}, valid_session
+      expect(response).to render_template(:error)
+
+    end 
   end
 
 end

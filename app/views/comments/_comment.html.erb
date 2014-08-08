@@ -9,7 +9,9 @@
 </p>
 
 <p>
+  <% if current_account.teacher? || comment.account == current_account %>
   <%= link_to 'Destroy Comment', [comment.notebook, comment],
                method: :delete,
                data: { confirm: 'Are you sure?' } %>
+  <% end %>
 </p>

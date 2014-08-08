@@ -23,28 +23,16 @@ RSpec.describe NotebooksController, :type => :controller do
   # This should return the minimal set of attributes required to create a valid
   # Lecture. As you add validations to Lecture, be sure to
   # adjust the attributes here as well.
-  before :each do
-    @user = login_student
-  end
-  # let(:account){
-  #   Account.create!(:email => 'user@example.com', :password => 'password', :password_confirmation => 'password', 
-  #     :first_name => 'Collen', :last_name => 'Masterson', :student_id => 1)
-  # }
-
-
   def valid_attributes
     {
-    
       title: "Title",
       lecture_id: @lecture.id,
       text: "text",
-      # account_id: account
     }
   end
 
   def invalid_attributes
     {
-     
       summary: "Summary"
     }
   end
@@ -70,6 +58,10 @@ RSpec.describe NotebooksController, :type => :controller do
   # in order to pass any filters (e.g. authentication) defined in
   # LecturesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
+
+  before :each do
+    @user = login_student
+  end
 
   describe "GET index" do
     let(:notebook) {Notebook.new}
@@ -140,7 +132,7 @@ RSpec.describe NotebooksController, :type => :controller do
 
     it "does not allow non-owners to edit the notebook" do
       new_student = Student.create!
-      user = Account.create(:password => "Password_student", :password_confirmation => "Password_student", :email => "test@email.com", :student => new_student)
+      user = Account.create(:password => "Password_student", :password_confirmation => "Password_student", :email => "test2@email.com", :student => new_student)
       notebook.stub(:account) { user }
       get :edit, {id: 1}, valid_session
       expect(response).to render_template(:error)
