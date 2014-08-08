@@ -19,8 +19,6 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe LecturesController, :type => :controller do
-  # login_teacher
-
   # This should return the minimal set of attributes required to create a valid
   # Lecture. As you add validations to Lecture, be sure to
   # adjust the attributes here as well.
