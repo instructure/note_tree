@@ -75,6 +75,13 @@ RSpec.describe LecturesController, :type => :controller do
       get :new, {:course_id => @course.id}, valid_session
       expect(assigns(:lecture)).to be_a_new(Lecture)
     end
+
+    it "should not let a student make a lecture" do
+      login_student
+      create_course
+      get :new, {:course_id => @course.id}, valid_session
+      expect(response).to render_template(:error)
+    end 
   end
 
   describe "GET edit" do
@@ -84,6 +91,14 @@ RSpec.describe LecturesController, :type => :controller do
       get :edit, {:course_id => @course.id, :id => lecture.to_param}, valid_session
       expect(assigns(:lecture)).to eq(lecture)
     end
+
+    it "should not let students edit a lecture" do
+      login_student
+      create_course
+      lecture = Lecture.create! valid_attributes
+      get :edit, {:course_id => @course.id, :id => lecture.to_param}, valid_session
+      expect(response).to render_template(:error)
+    end 
   end
 
   describe "POST create" do
