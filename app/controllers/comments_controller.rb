@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    
     @notebook = Notebook.find(params[:notebook_id])
     @comment = @notebook.comments.find(params[:id])
     @comment.destroy

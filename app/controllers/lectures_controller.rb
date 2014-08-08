@@ -1,6 +1,7 @@
 class LecturesController < ApplicationController
   before_action :set_lecture, only: [:show, :edit, :update, :destroy]
   before_action :set_course
+  before_action :ensure_teacher, except: [:index, :show] 
 
   # GET /lectures
   # GET /lectures.json
@@ -15,13 +16,11 @@ class LecturesController < ApplicationController
 
   # GET /lectures/new
   def new
-    render "shared/error" unless current_account.teacher?
     @lecture = Lecture.new
   end
 
   # GET /lectures/1/edit
   def edit
-    render "shared/error" unless current_account.teacher?
   end
 
   # POST /lectures
@@ -79,4 +78,8 @@ class LecturesController < ApplicationController
     def lecture_params
       params.require(:lecture).permit(:course_id, :date, :title, :summary)
     end
+
+    def ensure_teacher
+    render "shared/error" unless current_account.teacher?
+   end
 end
