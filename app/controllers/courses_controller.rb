@@ -13,14 +13,12 @@ class CoursesController < ApplicationController
   end
 
   # GET /courses/new
-  def new
-    
+  def new    
     @course = Course.new
   end
 
   # GET /courses/1/edit
   def edit
-
   end
 
   # POST /courses
@@ -72,6 +70,7 @@ class CoursesController < ApplicationController
     def course_params
       params.require(:course).permit(:short_name, :name, :description, :start_date, :end_date)
     end
+    
    def ensure_teacher
     render "shared/error" unless current_account.teacher?
    end

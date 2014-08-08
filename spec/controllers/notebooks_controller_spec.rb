@@ -23,8 +23,9 @@ RSpec.describe NotebooksController, :type => :controller do
   # This should return the minimal set of attributes required to create a valid
   # Lecture. As you add validations to Lecture, be sure to
   # adjust the attributes here as well.
-  @user = login_student
-
+  before :each do
+    @user = login_student
+  end
   # let(:account){
   #   Account.create!(:email => 'user@example.com', :password => 'password', :password_confirmation => 'password', 
   #     :first_name => 'Collen', :last_name => 'Masterson', :student_id => 1)

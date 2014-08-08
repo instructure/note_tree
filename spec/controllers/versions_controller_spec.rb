@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe VersionsController, :type => :controller do
-  login_teacher
+  before :each do
+    @teacher = login_teacher
+  end
 end

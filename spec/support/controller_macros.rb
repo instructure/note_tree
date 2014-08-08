@@ -12,6 +12,6 @@ module ControllerMacros
     teacher = Teacher.create!
     user = Account.create!(:password => "password", :password_confirmation => "password", :email => "teacher@email.com", :teacher => teacher)
     sign_in user
-    user
+    # user
   end
 end
