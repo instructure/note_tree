@@ -23,27 +23,16 @@ RSpec.describe NotebooksController, :type => :controller do
   # This should return the minimal set of attributes required to create a valid
   # Lecture. As you add validations to Lecture, be sure to
   # adjust the attributes here as well.
-  @user = login_student
-
-  # let(:account){
-  #   Account.create!(:email => 'user@example.com', :password => 'password', :password_confirmation => 'password', 
-  #     :first_name => 'Collen', :last_name => 'Masterson', :student_id => 1)
-  # }
-
-
   def valid_attributes
     {
-    
       title: "Title",
       lecture_id: @lecture.id,
-      text: "text",
-      # account_id: account
+      text: "text"
     }
   end
 
   def invalid_attributes
     {
-     
       summary: "Summary"
     }
   end
@@ -69,6 +58,10 @@ RSpec.describe NotebooksController, :type => :controller do
   # in order to pass any filters (e.g. authentication) defined in
   # LecturesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
+
+  before :each do
+    @user = login_student
+  end
 
   describe "GET index" do
     let(:notebook) {Notebook.new}
@@ -139,7 +132,7 @@ RSpec.describe NotebooksController, :type => :controller do
 
     it "does not allow non-owners to edit the notebook" do
       new_student = Student.create!
-      user = Account.create(:password => "Password_student", :password_confirmation => "Password_student", :email => "test@email.com", :student => new_student)
+      user = Account.create(:password => "Password_student", :password_confirmation => "Password_student", :email => "test2@email.com", :student => new_student)
       notebook.stub(:account) { user }
       get :edit, {id: 1}, valid_session
       expect(response).to render_template(:error)
@@ -168,25 +161,38 @@ RSpec.describe NotebooksController, :type => :controller do
         notebook_id = Notebook.last.id
         expect(response).to redirect_to(notebook_path(notebook_id))
       end
-       it "assigns a newly created lecture as @lecture" do
-        #post :create, {:notebook => :lecture => valid_attributes}, valid_session
-        #lecture_id = Lecture.last.id
-        #expect(assigns(:notebook)).to be_in_a(Notebook)
-      #   #expect(response).to redirect_to(notebook_path(notebook_id))
-        # expect(assigns(:notebook)).to be_persisted
-        end
       end
     end
 
    describe "DELETE destroy" do
-  #  notebook = Notebook.create! course_variable
- 
-   it "destroys the requested notebook" do
+     it "destroys the requested notebook" do
       course_variable
-      notebook = Notebook.create(valid_attributes)
-       expect {
-         delete :destroy, { :id => notebook}, valid_session
-       }.to change(Notebook, :count).by(-1)
+      notebook = Notebook.create!(valid_attributes)
+      notebook.account = @user
+      notebook.save
+      expect {
+        delete :destroy, { :id => notebook}, valid_session
+      }.to change(Notebook, :count).by(-1)
+      end
+
+      it "doesn't allow non student owners to delete notebook" do
+        course_variable
+        notebook = Notebook.create(valid_attributes)
+        new_student = Student.create!
+        user = Account.create(:password => "Password_student", :password_confirmation => "Password_student", :email => "test2@email.com", :student => new_student)
+        notebook.stub(:account) { user }
+        delete :destroy, {:id => notebook}, valid_session
+        expect(response).to render_template(:error)
+      end
+
+      it "allows teachers to delete any notebook" do 
+        course_variable
+        notebook = Notebook.create(valid_attributes)
+        new_teacher = Teacher.create!
+        teacher = Account.create(:password => "Password_teacher", :password_confirmation => "Password_teacher", :email => "test2@email.com", :teacher => new_teacher)
+        notebook.stub(:account) { teacher }
+        delete :destroy, {:id => notebook}, valid_session
+        expect(response).to be_successful
         end
     end
 end

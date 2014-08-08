@@ -19,8 +19,10 @@
         <td><%= lecture.title %></td>
         <td><%= lecture.summary %></td>
         <td><%= link_to 'Show', course_lecture_path(lecture.course, lecture) %></td>
-        <td><%= link_to 'Edit', edit_course_lecture_path(lecture.course, lecture) %></td>
-        <td><%= link_to 'Destroy', course_lecture_path(lecture.course, lecture), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_account.teacher? %>
+          <td><%= link_to 'Edit', edit_course_lecture_path(lecture.course, lecture) %></td>
+          <td><%= link_to 'Destroy', course_lecture_path(lecture.course, lecture), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

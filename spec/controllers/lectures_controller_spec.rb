@@ -19,8 +19,6 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe LecturesController, :type => :controller do
-  login_teacher
-
   # This should return the minimal set of attributes required to create a valid
   # Lecture. As you add validations to Lecture, be sure to
   # adjust the attributes here as well.
@@ -48,6 +46,10 @@ RSpec.describe LecturesController, :type => :controller do
   # in order to pass any filters (e.g. authentication) defined in
   # LecturesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
+  
+  before :each do
+    @teacher = login_teacher
+  end
 
   describe "GET index" do
     it "assigns all lectures as @lectures" do
@@ -73,6 +75,13 @@ RSpec.describe LecturesController, :type => :controller do
       get :new, {:course_id => @course.id}, valid_session
       expect(assigns(:lecture)).to be_a_new(Lecture)
     end
+
+    it "should not let a student make a lecture" do
+      login_student
+      create_course
+      get :new, {:course_id => @course.id}, valid_session
+      expect(response).to render_template(:error)
+    end 
   end
 
   describe "GET edit" do
@@ -82,6 +91,14 @@ RSpec.describe LecturesController, :type => :controller do
       get :edit, {:course_id => @course.id, :id => lecture.to_param}, valid_session
       expect(assigns(:lecture)).to eq(lecture)
     end
+
+    it "should not let students edit a lecture" do
+      login_student
+      create_course
+      lecture = Lecture.create! valid_attributes
+      get :edit, {:course_id => @course.id, :id => lecture.to_param}, valid_session
+      expect(response).to render_template(:error)
+    end 
   end
 
   describe "POST create" do

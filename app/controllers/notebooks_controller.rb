@@ -69,10 +69,14 @@ class NotebooksController < ApplicationController
   # DELETE /notebooks/1
   # DELETE /notebooks/1.json
   def destroy
-    @notebook.destroy
-    respond_to do |format|
-      format.html { redirect_to notebooks_url, notice: 'Notebook was successfully destroyed.' }
-      #format.json { head :no_content }
+    if current_account == @notebook.account || current_account.teacher?
+      @notebook.destroy
+      respond_to do |format|
+        format.html { redirect_to notebooks_url, notice: 'Notebook was successfully destroyed.' }
+        #format.json { head :no_content }
+      end
+    else
+      render "shared/error"
     end
   end
 

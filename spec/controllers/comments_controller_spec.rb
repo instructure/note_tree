@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CommentsController, :type => :controller do
-login_teacher
+# login_teacher
 
   # This should return the minimal set of attributes required to create a valid
   # Comment. As you add validations to Course, be sure to
@@ -45,6 +45,9 @@ login_teacher
   # CommentssController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  before :each do
+    @teacher = login_teacher
+  end
 
   describe "POST create" do
     describe "with valid params" do
@@ -91,6 +94,26 @@ login_teacher
       comment = Comment.create! valid_attributes
       delete :destroy, {:notebook_id => notebook, :id => comment.to_param}, valid_session
       expect(response).to redirect_to(Notebook.last)
+    end
+
+    it "does not allow student non-owners to delete a comment" do
+      comment = Comment.create! valid_attributes
+      new_student = Student.create!
+      student = Account.create(:password => "Password_student", :password_confirmation => "Password_student", :email => "test2@email.com", :student => new_student)    
+      sign_in student
+      delete :destroy, {:notebook_id => notebook, :id => comment.to_param}, valid_session
+      expect(response).to render_template(:error)
+    end 
+
+    it "allows teachers to delete comments" do
+      login_student
+      comment = Comment.create! valid_attributes
+      new_teacher = Teacher.create!
+      teacher = Account.create(:password => "Password_student", :password_confirmation => "Password_student", :email => "testteacher@email.com", :teacher => new_teacher)    
+      sign_in teacher
+      expect {
+        delete :destroy, {:notebook_id => notebook, :id => comment.to_param}, valid_session
+      }.to change(Comment, :count).by(-1)
     end
   end
 

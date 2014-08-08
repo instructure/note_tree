@@ -10,9 +10,13 @@ class CommentsController < ApplicationController
 
   def destroy
     @notebook = Notebook.find(params[:notebook_id])
-    @comment = @notebook.comments.find(params[:id])
-    @comment.destroy
-    redirect_to notebook_path(@notebook)
+    @comment = @notebook.comments.find(params[:id]) 
+    if current_account == @comment.account || current_account.teacher?
+      @comment.destroy
+      redirect_to notebook_path(@notebook)
+    else
+      render "shared/error"
+    end
   end
 
   private
