@@ -103,8 +103,18 @@ RSpec.describe CommentsController, :type => :controller do
       sign_in student
       delete :destroy, {:notebook_id => notebook, :id => comment.to_param}, valid_session
       expect(response).to render_template(:error)
-
     end 
+
+    it "allows teachers to delete comments" do
+      login_student
+      comment = Comment.create! valid_attributes
+      new_teacher = Teacher.create!
+      teacher = Account.create(:password => "Password_student", :password_confirmation => "Password_student", :email => "testteacher@email.com", :teacher => new_teacher)    
+      sign_in teacher
+      expect {
+        delete :destroy, {:notebook_id => notebook, :id => comment.to_param}, valid_session
+      }.to change(Comment, :count).by(-1)
+    end
   end
 
 end
