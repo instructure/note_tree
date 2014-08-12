@@ -8,7 +8,7 @@ RSpec.describe CommentsController, :type => :controller do
   # adjust the attributes here as well.
   let(:account){
     Account.create!(:email => 'user@example.com', :password => 'password', :password_confirmation => 'password', 
-      :first_name => 'Collen', :last_name => 'Masterson')
+      :first_name => 'Colleen', :last_name => 'Masterson')
   }
 
   let(:notebook){
