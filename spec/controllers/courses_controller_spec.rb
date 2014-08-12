@@ -28,7 +28,8 @@ RSpec.describe CoursesController, :type => :controller do
       "name" => "My super awesome fancy course.",
       "description" => "Course information.",
       "start_date" => Date.today,
-      "end_date" => Date.tomorrow
+      "end_date" => Date.tomorrow,
+      "teachers" => [@teacher.teacher]
     }
   }
 
@@ -83,16 +84,29 @@ RSpec.describe CoursesController, :type => :controller do
   describe "GET edit" do
     it "assigns the requested course as @course" do
       course = Course.create! valid_attributes
-      get :edit, {:id => course.to_param}, valid_session
+      get :edit, {:id => course.id}, valid_session
       expect(assigns(:course)).to eq(course)
     end
 
     it "shouldn't let a student edit a course" do
-      login_student
       course = Course.create! valid_attributes
-      get :edit, {:id => course.to_param}, valid_session
+      login_student
+      get :edit, {:id => course.id}, valid_session
       expect(response).to render_template(:error)
     end
+    
+    it "shouldn't let a teacher who doesn't own course edit the course" do 
+      course = Course.create! valid_attributes
+      login_teacher
+      get :edit, {:id => course.to_param}, valid_session
+      expect(response).to render_template(:show)
+    end
+
+    it "should allow teachers who own a course to delete" do
+      course = Course.create! valid_attributes
+      get :edit, {:id => course.to_param}, valid_session
+      expect(response).to render_template(:edit)
+    end 
   end
 
   describe "POST create" do

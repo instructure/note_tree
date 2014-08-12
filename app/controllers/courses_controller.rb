@@ -26,7 +26,7 @@ class CoursesController < ApplicationController
         format.html { render :edit, notice: 'Course was successfully updated.' }
         format.json { render :edit, status: :ok, location: @course }
       else
-        format.html { render :edit }
+        format.html { render :show, notice: 'YOU CANNOT DO THAT.' }
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end
