@@ -23,7 +23,9 @@ RSpec.describe NotebooksController, :type => :controller do
   # This should return the minimal set of attributes required to create a valid
   # Lecture. As you add validations to Lecture, be sure to
   # adjust the attributes here as well.
-  @user = login_student
+  before do
+    @user = login_student
+  end
 
   def valid_attributes
     {
@@ -31,6 +33,7 @@ RSpec.describe NotebooksController, :type => :controller do
       title: "Title",
       lecture_id: @lecture.id,
       text: "text",
+      account: @user
     }
   end
 
