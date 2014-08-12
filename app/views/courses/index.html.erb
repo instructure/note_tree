@@ -21,9 +21,11 @@
         <td><%= course.start_date %></td>
         <td><%= course.end_date %></td>
         <td><%= link_to 'Show', course %></td>
-        <%if current_account.teacher?%>
+        <%if course.teachers.include?(current_account.teacher) %>
           <td><%= link_to 'Edit', edit_course_path(course) %></td>
+          <% if current_account.teacher? %>
           <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
           <% end %>
       </tr>
     <% end %>
