@@ -198,5 +198,12 @@ RSpec.describe CoursesController, :type => :controller do
       expect(response).to redirect_to(courses_url)
     end
   end
-
+  describe "PUT enroll_student" do
+    it "enrolls a student" do
+      course = Course.create! valid_attributes
+      student = login_student
+      put :enroll_student, {:course_id =>course.id, :id => student.student.id}, valid_session
+      expect(student.student.is_enrolled?(course)).to eq(true)
+    end
+  end
 end
