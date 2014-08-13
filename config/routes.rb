@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   put '/courses/:course_id/enroll_student/:id', to: 'courses#enroll_student', as: :course_enroll_student
   # root to: "home#index"
-put '/courses/:course_id/enroll_teacher/:id', to: 'courses#enroll_teacher', as: :course_enroll_teacher
+  put '/courses/:course_id/enroll_teacher/:id', to: 'courses#enroll_teacher', as: :course_enroll_teacher
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
