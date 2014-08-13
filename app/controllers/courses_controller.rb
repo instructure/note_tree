@@ -15,10 +15,21 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new    
     @course = Course.new
+    
   end
 
   # GET /courses/1/edit
   def edit
+    respond_to do |format|
+    if  @course.teachers.include?(current_account.teacher)
+
+        format.html { render :edit, notice: 'Course was successfully updated.' }
+        format.json { render :edit, status: :ok, location: @course }
+      else
+        format.html { render :show, notice: 'YOU CANNOT DO THAT.' }
+        format.json { render json: @course.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # POST /courses
@@ -27,6 +38,8 @@ class CoursesController < ApplicationController
     @course = Course.new(course_params)
     respond_to do |format|
       if @course.save
+        @course.teachers << current_account.teacher
+        @course.save
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
         format.json { render :show, status: :created, location: @course }
       else
@@ -53,10 +66,13 @@ class CoursesController < ApplicationController
   # DELETE /courses/1
   # DELETE /courses/1.json
   def destroy
-    @course.destroy
     respond_to do |format|
-      format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
-      format.json { head :no_content }
+      if @course.teachers.include?(current_account.teacher)
+        @course.destroy
+        format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
+      else 
+        format.html { redirect_to @course, notice: 'Course was not successfully destroyed ' }
+      end 
     end
   end
 
