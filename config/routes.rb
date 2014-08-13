@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-  get 'files/index'
-
-  get 'files/new'
-
-  get 'files/create'
-
-  get 'files/destroy'
 
   root :to => "courses#index"
   devise_for :accounts, :controllers => { :registrations => "registrations" }
@@ -19,7 +12,7 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-
+  put '/courses/:course_id/enroll_student/:id', to: 'courses#enroll_student', as: :course_enroll_student
   # root to: "home#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

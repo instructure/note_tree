@@ -21,6 +21,16 @@
         <td><%= course.start_date %></td>
         <td><%= course.end_date %></td>
         <td><%= link_to 'Show', course %></td>
+        <%if current_account.teacher %>
+        <td><%= link_to 'Join as Teacher', course %></td>
+        <% end %>
+        <td> 
+          <%if current_account.student && current_account.student.is_enrolled?(course) %>
+            ENROLLED IN THIS BOOOOOOOM.
+          <% elsif current_account.student %>
+            <%= button_to 'Join as Student', course_enroll_student_path(:course_id => course, :id=> current_account.student.id), method: :put %>
+          <% end %>
+        </td>
         <%if course.teachers.include?(current_account.teacher) %>
           <td><%= link_to 'Edit', edit_course_path(course) %></td>
           <% if current_account.teacher? %>
