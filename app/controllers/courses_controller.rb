@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_action :ensure_teacher, except: [:index, :show]
+  before_action :ensure_teacher, except: [:index, :show, :enroll_student]
   # GET /courses
   # GET /courses.json
   def index
@@ -76,6 +76,13 @@ class CoursesController < ApplicationController
     end
   end
 
+  def enroll_student
+    @course = Course.find(params[:course_id])
+    student = Student.find(params[:id])
+    @course.students << student
+    redirect_to @course, notice: 'Course was successfully updated.'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_course
@@ -90,4 +97,5 @@ class CoursesController < ApplicationController
    def ensure_teacher
     render "shared/error" unless current_account.teacher?
    end
+
 end
