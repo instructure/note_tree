@@ -206,4 +206,11 @@ RSpec.describe CoursesController, :type => :controller do
       expect(student.student.is_enrolled?(course)).to eq(true)
     end
   end
+  describe "PUT enroll_teacher" do
+    it "enrolls a teacher" do
+      course = Course.create! valid_attributes
+      put :enroll_teacher, {:course_id =>course.id, :id => @teacher.teacher.id}, valid_session
+      expect(@teacher.teacher.is_enrolled?(course)).to eq(true)
+    end
+  end
 end

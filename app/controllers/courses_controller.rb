@@ -83,6 +83,13 @@ class CoursesController < ApplicationController
     redirect_to @course, notice: 'Course was successfully updated.'
   end
 
+  def enroll_teacher
+    @course = Course.find(params[:course_id])
+    teacher = Teacher.find(params[:id])
+    @course.teachers << teacher
+    redirect_to @course, notice: 'Course was successfully updated.'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_course
