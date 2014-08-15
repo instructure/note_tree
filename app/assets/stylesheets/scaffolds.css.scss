@@ -9,15 +9,25 @@ form.new_account{
 input{
   background-color: #F1F1F2;
   width: 220px;
-  height: 20px;
+  height: 35px;
   border-radius: 3px;
   margin: 10px;
+  border: solid #B8BFCB 1px; 
+  color: #B8BFCB;
+  padding: 5px;
+  font-size: 14px;
 }
 
 input[type="submit"]{
   background-color: #27BCB7;
-  height: 25px;
-  width: 225px;
+  height:40px;
+  width: 235px;
+  color: white;
+  border:none;
+  padding: 5px;
+  font-family: Mensch;
+  font-size: 32px;
+  padding-top: 8px;
 }
 
 form#new_account.new_account{
@@ -26,10 +36,22 @@ form#new_account.new_account{
   right: 165px;
 }
 
+div.sign_up{
+  position: absolute;
+  right: 175px;
+  top: 390px; 
+}
+
+div.forgot_password{
+  position: absolute;
+  right: 175px;
+  top: 410px; 
+}
+
 p.alert{
   position: absolute;
   right: 175px;
-  top: 320px;
+  top: 360px;
 }
 
 li{

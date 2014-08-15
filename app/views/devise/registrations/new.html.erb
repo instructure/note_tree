@@ -3,20 +3,20 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :first_name %><br />
-  <%= f.text_field :first_name, autofocus: true %></div>
+  <div>
+  <%= f.text_field :first_name, autofocus: true, placeholder: "First Name" %></div>
 
-  <div><%= f.label :last_name %><br />
-  <%= f.text_field :last_name %></div>
+  <div>
+  <%= f.text_field :last_name, placeholder: "Last Name" %></div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email%></div>
+  <div>
+  <%= f.email_field :email, placeholder: "Email"%></div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password, autocomplete: "off" %></div>
+  <div>
+  <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %></div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+  <div>
+  <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Password Confirmation" %></div>
 
   <div><%= label_tag :account_type %><br />
   <%= select_tag :account_type, options_for_select([ "Teacher", "Student" ], "")  %>
