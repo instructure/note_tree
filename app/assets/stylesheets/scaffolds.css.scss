@@ -1,3 +1,41 @@
+nav{
+  background-color: #1D233C;
+  height: 80px;
+}
+form.new_account{
+   
+}
+
+input{
+  background-color: #F1F1F2;
+  width: 220px;
+  height: 20px;
+  border-radius: 3px;
+  margin: 10px;
+}
+
+input[type="submit"]{
+  background-color: #27BCB7;
+  height: 25px;
+  width: 225px;
+}
+
+form#new_account.new_account{
+  margin-top: 100px;
+  position: absolute;
+  right: 165px;
+}
+
+p.alert{
+  position: absolute;
+  right: 175px;
+  top: 320px;
+}
+
+li{
+  list-style-type: none;
+}
+
 body {
   background-color: #fff;
   color: #333;
@@ -19,9 +57,10 @@ pre {
 }
 
 a {
-  color: #000;
+  color: #F1F1F2;
+
   &:visited {
-    color: #666;
+    color: #F1F1F2;
   }
   &:hover {
     color: #fff;
