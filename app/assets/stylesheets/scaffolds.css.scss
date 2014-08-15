@@ -1,3 +1,9 @@
+body.user{
+  background-image: url(/assets/background.png);
+  background-repeat:repeat-x;
+  background-position: 0px 305px;
+}
+
 nav{
   background-color: #1D233C;
   height: 80px;
@@ -33,18 +39,18 @@ input[type="submit"]{
 form#new_account.new_account{
   margin-top: 100px;
   position: absolute;
-  right: 165px;
+  right: 265px;
 }
 
 div.sign_up{
   position: absolute;
-  right: 175px;
+  right: 275px;
   top: 390px; 
 }
 
 div.forgot_password{
   position: absolute;
-  right: 175px;
+  right: 275px;
   top: 410px; 
 }
 
