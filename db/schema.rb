@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 20140812190036) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "lecture_id"
     t.integer  "account_id"
   end
 
@@ -94,7 +95,6 @@ ActiveRecord::Schema.define(version: 20140812190036) do
 
   create_table "teachers", force: true do |t|
     t.integer "account_id"
-    t.integer "course_id"
   end
 
   create_table "versions", force: true do |t|
