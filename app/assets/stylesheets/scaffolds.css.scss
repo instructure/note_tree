@@ -2,14 +2,13 @@ body.user{
   background-image: url(/assets/background.png);
   background-repeat:repeat-x;
   background-position: 0px 305px;
+  background-size: 100%;
+  margin: 0;  
 }
 
 nav{
   background-color: #1D233C;
   height: 80px;
-}
-form.new_account{
-   
 }
 
 input{
@@ -27,7 +26,7 @@ input{
 input[type="submit"]{
   background-color: #27BCB7;
   height:40px;
-  width: 235px;
+  width: 233px;
   color: white;
   border:none;
   padding: 5px;
@@ -37,27 +36,37 @@ input[type="submit"]{
 }
 
 form#new_account.new_account{
-  margin-top: 100px;
+  margin-top: 40px;
   position: absolute;
   right: 265px;
-}
+  }
 
 div.sign_up{
   position: absolute;
   right: 275px;
-  top: 390px; 
+  top: 320px; 
+}
+
+div.sign_in{
+  position: absolute;
+  right: 275px;
+  top: 550px; 
 }
 
 div.forgot_password{
   position: absolute;
   right: 275px;
-  top: 410px; 
+  top: 340px; 
 }
 
 p.alert{
   position: absolute;
-  right: 175px;
-  top: 360px;
+  right: 275px;
+  top: 350px;
+}
+
+p.notice{
+  position: absolute;
 }
 
 li{

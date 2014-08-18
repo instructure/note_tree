@@ -42,7 +42,7 @@ RSpec.describe "UserFlows", :type => :request do
     it 'should sign out user' do
       sign_in("user@example.com", "password")
       click_link 'Logout'
-      expect(page).to have_content('Signed out successfully')
+      expect(page).to have_content('Signed out successfully.')
     end 
 
     def sign_up_with(first_name, last_name, email, password, password_confirmation)
