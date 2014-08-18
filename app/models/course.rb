@@ -6,7 +6,7 @@ class Course < ActiveRecord::Base
   validates :short_name, :name, :start_date, :end_date, :description, presence: true
   validates :short_name, length: {within: 1..10}
   validates :name, length: {within: 1..100}
-  validates :description, length: {within:1..250}
+  validates :description, length: {within:1..75}
 
   def values_for_lecture_ids
     lectures.collect { |l| [l.concat_id, l.id]} 
