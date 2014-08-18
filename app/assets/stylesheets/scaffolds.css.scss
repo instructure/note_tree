@@ -131,6 +131,66 @@ div#notebook{
   margin: 100px;  
 }
 
+div#course{
+  background: white;
+  margin: 100px;  
+}
+
+input#course_short_name{
+  border: none;
+  background: white;
+  font-family: Mensch;
+  font-size: 48px;
+  color: #7C6FB2;
+  width: 80%;
+  height: 60px;
+  margin: 2px;
+}
+
+input#course_name{
+  border: none;
+  background: white;
+  font-family: Mensch;
+  font-size: 32px;
+  color: #F16672;
+  width: 50%;
+  height: 50px;
+  padding-bottom: 20px;
+  margin: 2px;
+}
+
+textarea#course_description{
+  border: none;
+  width: 99%;
+  margin: 2px;
+  font-family: Avenir;
+  font-size: 32px;
+}
+
+div#lecture{
+  background: white;
+  margin: 100px;  
+}
+
+input#lecture_title{
+  border: none;
+  background: white;
+  font-family: Mensch;
+  font-size: 48px;
+  color: #7C6FB2;
+  width: 50%;
+  height: 100px;
+  margin: 2px;
+}
+
+textarea#lecture_summary{
+  border: none;
+  width: 99%;
+  margin: 2px;
+  font-family: Avenir;
+  font-size: 32px;
+}
+
 textarea#notebook_text{
   border: none;
   width: 99%;

@@ -10,19 +10,6 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :short_name %><br>
-    <%= f.text_field :short_name %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
   <div class="field">
     <%= f.label :start_date %><br>
     <%= f.date_select :start_date %>
@@ -34,4 +21,16 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+  <div id="course">
+    <div class="field">
+      <%= f.text_field :short_name, placeholder: "Enter Shortened Course Name" %>
+    </div>
+    <div class="field">
+      <%= f.text_field :name, placeholder: "Course Full Name"%>
+    </div>
+    <div class="field">
+      <%= f.text_area :description, placeholder: "List course decription here."%>
+    </div>
+  </div>
+ 
 <% end %>
