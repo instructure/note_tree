@@ -84,8 +84,8 @@ p.notice{
 div.listing_courses{
   border: solid white 2px;
   padding: 25px;
-  margin: 20px;
-  width: 25%;
+  margin: 30px;
+  width: 22%;
   height: 200px;
   background: white;
 }
@@ -124,6 +124,30 @@ ul.display_options{
 li{
   list-style-type: none;
   display: inline;
+}
+
+div#notebook{
+  background: white;
+  margin: 100px;  
+}
+
+textarea#notebook_text{
+  border: none;
+  width: 99%;
+  margin: 2px;
+  font-family: Avenir;
+  font-size: 32px;
+}
+
+input#notebook_title{
+  border: none;
+  background: white;
+  font-family: Mensch;
+  font-size: 48px;
+  color: #7C6FB2;
+  width: 50%;
+  height: 100px;
+  margin: 2px;
 }
 
 body {

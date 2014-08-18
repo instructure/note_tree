@@ -11,18 +11,19 @@
     </div>
   <% end %>
   <div class="field">
+    <%= f.label "Choose Lecture" %>
     <%= f.select :lecture_id, @lectures %>
-  </div>
-  <div class="field">
-    <%= f.label :text %><br>
-    <%= f.text_area :text %>
-  </div>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+  <div id="notebook">
+    <div class="field">
+      <%= f.text_field :title, value: "Enter Note Title" %>
+    </div>
+    <div class="field">
+      <%= f.text_area :text, placeholder: "Start your note here."%>
+    </div>
+  </div>
+ 
 <% end %>
