@@ -81,12 +81,53 @@ p.notice{
   position: absolute;
 }
 
+div.listing_courses{
+  border: solid white 2px;
+  padding: 25px;
+  margin: 20px;
+  width: 25%;
+  height: 200px;
+  background: white;
+}
+
+
+div#short_name{
+  font-family: Mensch;
+  font-size: 32px;
+  color: #7C6FB2;
+  padding-bottom: 3px;
+}
+
+div#course_name{
+  font-family: Museo;
+  font-size: 24px;
+  color: #27BCB7;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+div#course_description{
+  font-family: Avenir;
+  font-size: 24px;
+  color: #B8BFCB;
+  padding-top: 15px;
+}
+
+ul.display_options{
+  display: inline;
+  text-decoration: none;
+  list-style: none;
+  position: absolute;
+  padding: 0px;
+}
+
 li{
   list-style-type: none;
+  display: inline;
 }
 
 body {
-  background-color: #fff;
+  background-color: #F1F1F2;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
