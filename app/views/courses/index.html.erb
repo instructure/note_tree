@@ -6,40 +6,41 @@ padding-left: 25px;
 <a id="course_link" href="/courses/">Courses</a>
 <a id="notes_link" href="/notebooks/">Notes</a>
 </nav>
+  <div id="course_index">
+  <% @courses.each do |course| %>
 
-<% @courses.each do |course| %>
-
-  <div class="listing_courses">
-    <div id="short_name"><%= course.short_name %></div>
-    <div id="course_name"  ><%= course.name %></div>
-    <div id="course_description"><%= course.description %></div>
-    <div><%= course.start_date %></div>
-    <div><%= course.end_date %></div>
-    <div><%if current_account.teacher && current_account.teacher.is_enrolled?(course) %>
-        ENROLLED IN THIS.
-      <% elsif current_account.teacher %>
-        <%= button_to 'Join as Teacher', course_enroll_teacher_path(:course_id => course, :id=> current_account.teacher.id), method: :put %>
-      <% end %></td>
-      <div> 
-      <%if current_account.student && current_account.student.is_enrolled?(course) %>
-        ENROLLED IN THIS BOOOOOOOM.
-      <% elsif current_account.student %>
-        <%= button_to 'Join as Student', course_enroll_student_path(:course_id => course, :id=> current_account.student.id), method: :put %>
-      <% end %>
-      </div>
-      <ul class="display_options">
-        <li><%= link_to 'Show', course %></li>
-        <%if course.teachers.include?(current_account.teacher) %>
-          <li><%= link_to 'Edit', edit_course_path(course) %></li>
-        <% if current_account.teacher? %>
-          <li><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-        <% end %>
-        <% end %>
-      </ul> 
+    <div class="listing_courses">
+      <div id="short_name"><%= course.short_name %></div>
+      <div id="course_name"  ><%= course.name %></div>
+      <div id="course_description"><%= course.description %></div>
+      <div><%= course.start_date %></div>
+      <div><%= course.end_date %></div>
+      <div><%if current_account.teacher && current_account.teacher.is_enrolled?(course) %>
+          ENROLLED IN THIS.
+        <% elsif current_account.teacher %>
+          <%= button_to 'Join as Teacher', course_enroll_teacher_path(:course_id => course, :id=> current_account.teacher.id), method: :put %>
+        <% end %></td>
+        <div> 
+          <%if current_account.student && current_account.student.is_enrolled?(course) %>
+            ENROLLED IN THIS BOOOOOOOM.
+          <% elsif current_account.student %>
+            <%= button_to 'Join as Student', course_enroll_student_path(:course_id => course, :id=> current_account.student.id), method: :put %>
+          <% end %>
+        </div>
+        <ul class="display_options">
+          <li><%= link_to 'Show', course %></li>
+          <%if course.teachers.include?(current_account.teacher) %>
+            <li><%= link_to 'Edit', edit_course_path(course) %></li>
+          <% if current_account.teacher? %>
+            <li><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          <% end %>
+          <% end %>
+        </ul> 
       </div>
     </div>
+  <% end %>
   </div>
-<% end %>
+
 
 <br>
 <% if current_account.teacher? %>

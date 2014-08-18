@@ -88,8 +88,12 @@ div.listing_courses{
   width: 22%;
   height: 200px;
   background: white;
+  float:left
 }
 
+div#course_index:nth-child(4n){
+  clear: both;
+}
 
 div#short_name{
   font-family: Mensch;
@@ -145,6 +149,7 @@ input#course_short_name{
   width: 80%;
   height: 60px;
   margin: 2px;
+  padding-top: 35px;  
 }
 
 input#course_name{
