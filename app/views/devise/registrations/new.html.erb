@@ -24,9 +24,8 @@ padding-left: 25px;
   <div>
   <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Password Confirmation" %></div>
 
-  <div><%= label_tag :account_type %><br />
+  <div>
   <%= select_tag :account_type, options_for_select([ "Teacher", "Student" ], "")  %>
-
   </div>
 
   <div><%= f.submit "Sign up" %></div>

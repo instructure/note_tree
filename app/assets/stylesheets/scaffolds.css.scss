@@ -41,6 +41,18 @@ form#new_account.new_account{
   right: 265px;
   }
 
+select#account_type{
+  background-color: white;
+  width: 232px;
+  height: 35px;
+  border-radius: 3px;
+  margin: 10px;
+  border: solid #B8BFCB 1px;
+  color: #F16672;
+  padding: 5px;
+  font-size: 14px;
+}
+
 div.sign_up{
   position: absolute;
   right: 275px;
@@ -50,7 +62,7 @@ div.sign_up{
 div.sign_in{
   position: absolute;
   right: 275px;
-  top: 550px; 
+  top: 565px; 
 }
 
 div.forgot_password{
@@ -79,6 +91,7 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  margin: 0;
 }
 
 p, ol, ul, td {
@@ -104,6 +117,23 @@ a {
     color: #fff;
     background-color: #000;
   }
+}
+
+a#course_link{
+  font-family: Avenir;
+  font-size: 21px;
+  color: white;
+  padding: 30px;
+  position: absolute;
+}
+
+a#notes_link{
+  font-family: Avenir;
+  font-size: 21px;
+  color: white;
+  padding: 30px;
+  position: absolute;
+  left:335px;
 }
 
 div {
