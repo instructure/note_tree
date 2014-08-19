@@ -10,15 +10,8 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :start_date %><br>
-    <%= f.date_select :start_date %>
-  </div>
-  <div class="field">
-    <%= f.label :end_date %><br>
-    <%= f.date_select :end_date %>
-  </div>
-  <div class="actions">
+  
+  <div class="actions" id="course_submit">
     <%= f.submit %>
   </div>
   <div id="course">
@@ -28,6 +21,14 @@
     <div class="field">
       <%= f.text_field :name, placeholder: "Course Full Name"%>
     </div>
+    <div class="date">
+    <%= f.label :start_date %>:
+    <%= f.date_select :start_date %>
+  </div>
+  <div class="date" >
+    <%= f.label :end_date %>:
+    <%= f.date_select :end_date %>
+  </div>
     <div class="field">
       <%= f.text_area :description, placeholder: "List course decription here."%>
     </div>

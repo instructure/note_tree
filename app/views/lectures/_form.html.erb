@@ -12,19 +12,20 @@
   <% end %>
 
   </div>
-  <div class="field">
-    <%= f.label :date %><br>
-    <%= f.date_select :date %>
+ 
+  <div class="actions" id="lecture_submit">
+    <%= f.submit %>
   </div>
+
   <div id="lecture">
     <div class="field">
       <%= f.text_field :title, placeholder: "Lecture Name"%>
     </div>
+    <div class="field" id="lecture_date">
+      <%= f.date_select :date %>
+    </div>
     <div class="field">
       <%= f.text_area :summary, placeholder: "Lecture content here." %>
     </div>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
   </div>
 <% end %>

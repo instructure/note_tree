@@ -264,7 +264,8 @@ div.show_options{
 div#course{
   background: white;
   margin: 100px; 
-  height:600pxl 
+  height:600px;
+  margin-bottom:15px; 
 }
 
 input#course_short_name{
@@ -286,7 +287,7 @@ input#course_name{
   font-size: 32px;
   color: #F16672;
   width: 99%;
-  height: 50px;
+  height: 40px;
   padding-bottom: 20px;
   margin: 2px;
 }
@@ -295,16 +296,140 @@ textarea#course_description{
   border: none;
   width: 99%;
   margin: 2px;
+  margin-top:4px;
   font-family: Avenir;
   font-size: 32px;
-  height: 400px;
+  height: 320px;
+}
+
+div.date{
+  font-family: Mensch;
+  font-size: 18px;
+  color: #B8BFCB;
+  margin: 4px;
 }
 
 div#lecture{
   background: white;
   margin: 100px;
-  height: 600px;  
+  height: 600px; 
+  margin-bottom: 15px; 
 }
+
+div#lecture_submit.actions{
+  width: 250px;
+  position:absolute;
+  top: 100px;
+  right:8%;  
+}
+select#course_start_date_1i{
+ background-color: white;
+  width:75px;
+  height:20px;
+  border-radius: 3px;
+  margin: 2px;
+  border: solid #B8BFCB 1px;
+  color: #b8bfcb;
+  padding: 5px;
+  font-size: 14px;
+}
+select#course_start_date_2i{
+ background-color: white;
+  width:105px;
+  height:20px;
+  border-radius: 3px;
+  margin: 2px;
+  border: solid #B8BFCB 1px;
+  color: #b8bfcb;
+  padding: 5px;
+  font-size: 14px;
+}
+select#course_start_date_3i{
+ background-color: white;
+  width:60px;
+  height:20px;
+  border-radius: 3px;
+  margin:2px;
+  border: solid #B8BFCB 1px;
+  color: #b8bfcb;
+  padding: 5px;
+  font-size: 14px;
+}
+select#course_end_date_1i{
+ background-color: white;
+  width:75px;
+  height:20px;
+  border-radius: 3px;
+  margin: 2px;
+  border: solid #B8BFCB 1px;
+  color: #b8bfcb;
+  padding: 5px;
+  font-size: 14px;
+  margin-left:16px;
+}
+select#course_end_date_2i{
+ background-color: white;
+  width:105px;
+  height:20px;
+  border-radius: 3px;
+  margin: 2px;
+  border: solid #B8BFCB 1px;
+  color: #b8bfcb;
+  padding: 5px;
+  font-size: 14px;
+}
+select#course_end_date_3i{
+ background-color: white;
+  width:60px;
+  height:20px;
+  border-radius: 3px;
+  margin:2px;
+  border: solid #B8BFCB 1px;
+  color: #b8bfcb;
+  padding: 5px;
+  font-size: 14px;
+}
+
+div#course_submit.actions{
+  width: 250px;
+  position:absolute;
+  top: 100px;
+  right:8%;  
+}
+select#lecture_date_1i{
+  background-color: white;
+  width:75px;
+  height:20px;
+  border-radius: 3px;
+  margin: 2px;
+  border: solid #B8BFCB 1px;
+  color: #B88FCB;
+  padding: 5px;
+  font-size: 14px;
+}
+select#lecture_date_2i{
+  background-color: white;
+  width:105px;
+  height:20px;
+  border-radius: 3px;
+  margin: 2px;
+  border: solid #B8BFCB 1px;
+  color: #B88FCB;
+  padding: 5px;
+  font-size: 14px;
+}
+select#lecture_date_3i{
+  background-color: white;
+  width:75px;
+  height:20px;
+  border-radius: 3px;
+  margin: 2px;
+  border: solid #B8BFCB 1px;
+  color: #B88FCB;
+  padding: 5px;
+  font-size: 14px;
+}
+
 
 input#lecture_title{
   border: none;
@@ -315,15 +440,17 @@ input#lecture_title{
   width: 99%;
   height: 100px;
   margin: 2px;
+  padding-bottom:5px;
 }
 
 textarea#lecture_summary{
+  padding-top:5px;
   border: none;
   width: 99%;
   margin: 2px;
   font-family: Avenir;
   font-size: 32px;
-  height: 455px;
+  height: 410px;
 }
 
 textarea#notebook_text{
