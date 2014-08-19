@@ -182,7 +182,8 @@ li{
 
 div#notebook{
   background: white;
-  margin: 100px;  
+  margin: 100px; 
+  height: 600px; 
 }
 
 div#show_course{
@@ -262,7 +263,8 @@ div.show_options{
 
 div#course{
   background: white;
-  margin: 100px;  
+  margin: 100px; 
+  height:600pxl 
 }
 
 input#course_short_name{
@@ -271,7 +273,7 @@ input#course_short_name{
   font-family: Mensch;
   font-size: 48px;
   color: #7C6FB2;
-  width: 80%;
+  width: 99%;
   height: 60px;
   margin: 2px;
   padding-top: 35px;  
@@ -283,7 +285,7 @@ input#course_name{
   font-family: Mensch;
   font-size: 32px;
   color: #F16672;
-  width: 50%;
+  width: 99%;
   height: 50px;
   padding-bottom: 20px;
   margin: 2px;
@@ -295,11 +297,13 @@ textarea#course_description{
   margin: 2px;
   font-family: Avenir;
   font-size: 32px;
+  height: 400px;
 }
 
 div#lecture{
   background: white;
-  margin: 100px;  
+  margin: 100px;
+  height: 600px;  
 }
 
 input#lecture_title{
@@ -319,6 +323,7 @@ textarea#lecture_summary{
   margin: 2px;
   font-family: Avenir;
   font-size: 32px;
+  height: 455px;
 }
 
 textarea#notebook_text{
@@ -327,6 +332,7 @@ textarea#notebook_text{
   margin: 2px;
   font-family: Avenir;
   font-size: 32px;
+  height: 455px;
 }
 
 input#notebook_title{
@@ -335,7 +341,7 @@ input#notebook_title{
   font-family: Mensch;
   font-size: 48px;
   color: #7C6FB2;
-  width: 50%;
+  width: 98.5%;
   height: 100px;
   margin: 2px;
 }

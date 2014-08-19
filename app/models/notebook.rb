@@ -5,7 +5,7 @@ class Notebook < ActiveRecord::Base
 	belongs_to :lecture 
   belongs_to :account
   validates :text, :title, presence: true
-	validates :title, length: {within: 1..100}
+	validates :title, length: {within: 1..25}
 
   def version_comments
     comments.select do |comment| 
