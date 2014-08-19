@@ -6,34 +6,23 @@ padding-left: 25px;
 <a id="course_link" href="/courses/">Courses</a>
 <a id="notes_link" href="/notebooks/">Notes</a>
 </nav>
-
-<h1>Listing notebooks</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+  <div id="notebook_index">
     <% @notebooks.each do |notebook| %>
-      <tr>
-        <td><%= notebook.title %></td>
-        <td><%= link_to 'Show', notebook %></td>
-        <% if current_account == notebook.account %>
-          <td><%= link_to 'Edit', edit_notebook_path(notebook) %></td>
-          <td><%= link_to 'Destroy', notebook, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-        <% if current_account.teacher? %>
-          <td><%= link_to 'Destroy', notebook, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
+      <div class="listing_notebooks">
+        <div id="notebook_title"><%= notebook.title %></div>
+        <ul class="display_options">
+        <li><%= link_to 'Show', notebook %></li>
+          <% if current_account == notebook.account %>
+            <li><%= link_to 'Edit', edit_notebook_path(notebook) %></li>
+            <li><%= link_to 'Destroy', notebook, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          <% end %>
+          <% if current_account.teacher? %>
+            <li><%= link_to 'Destroy', notebook, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          <% end %>
+        </ul>
+        </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
-<br>
 
 

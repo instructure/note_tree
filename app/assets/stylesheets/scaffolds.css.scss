@@ -109,6 +109,27 @@ div#lecture_index:nth-child(4n){
   clear: both;
 }
 
+div.listing_notebooks{
+  border: solid white 2px;
+  padding: 25px;
+  margin: 30px;
+  width: 22%;
+  height: 200px;
+  background: white;
+  float:left
+}
+
+div#notebook_index:nth-child(4n){
+  clear: both;
+}
+
+div#notebook_title{
+  font-family: Mensch;
+  font-size: 32px;
+  color: #7C6FB2;
+  padding-bottom: 3px;
+}
+
 div#lecture_title{
   font-family: Mensch;
   font-size: 32px;
