@@ -13,7 +13,7 @@ padding-left: 25px;
     <%= @course.short_name %>
   </p>
 
-  <p id="course_name">
+  <p class="course_name">
     <%= @course.name %>
   </p>
 
@@ -28,7 +28,7 @@ padding-left: 25px;
   </p>
 </div>
 
-<div id="course_options">
+<div class="show_options">
   <%= link_to "Take Notes!", {:controller => "notebooks", :action => "new", :course_id => @course.id} %> |
   <% if current_account.teacher? %>
     <%= link_to 'Edit', edit_course_path(@course) %> |

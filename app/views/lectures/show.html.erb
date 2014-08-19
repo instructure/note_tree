@@ -8,28 +8,26 @@ padding-left: 25px;
 </nav>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Course:</strong>
-  <%= @lecture.course.name %>
-</p>
+<div id="show_lecture">
+  <p id="lecture_title">
+    <%= @lecture.title %>
+  </p>
+  <p class="course_name">
+    <%= @lecture.course.name %>
+  </p>
+  <p id="lecture_summary">
+    <%= @lecture.summary %>
+  </p>
+  <p>
+    <strong>Date:</strong>
+    <%= @lecture.date %>
+  </p>
+</div>
 
-<p>
-  <strong>Date:</strong>
-  <%= @lecture.date %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @lecture.title %>
-</p>
-
-<p>
-  <strong>Summary:</strong>
-  <%= @lecture.summary %>
-</p>
-
-<% if current_account.teacher? %>
-	<%= link_to 'Edit', edit_course_lecture_path(@course, @lecture) %> |
-<% end %>
-<%= link_to 'Back', course_lectures_path(@course) %>
-<%= link_to 'Add New Notebook', {:controller => "notebooks", :action => "new", :course_id => @course.id} %> |
+<div class="show_options">
+	<% if current_account.teacher? %>
+		<%= link_to 'Edit', edit_course_lecture_path(@course, @lecture) %> |
+	<% end %>
+	<%= link_to 'Back', course_lectures_path(@course) %> |
+	<%= link_to 'Add New Notebook', {:controller => "notebooks", :action => "new", :course_id => @course.id} %> 
+</div>

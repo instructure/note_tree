@@ -170,6 +170,34 @@ div#show_course{
   margin-bottom: 15px;
 }
 
+div#show_lecture{
+  background: white;
+  margin: 100px; 
+  margin-bottom: 15px;
+}
+
+p#lecture_title{
+  border: none;
+  background: white;
+  font-family: Mensch;
+  font-size: 48px;
+  color: #7C6FB2;
+  width: 80%;
+  height: 60px;
+  margin: 2px;
+  padding-top: 35px;  
+}
+
+p#lecture_summary{
+  color: #B8BFCB;
+  border: none;
+  width: 99%;
+  margin: 2px;
+  font-family: Avenir;
+  font-size: 32px;
+  margin-bottom: 25px;
+}
+
 p#course_short_name{
   border: none;
   background: white;
@@ -182,7 +210,7 @@ p#course_short_name{
   padding-top: 35px;  
 }
 
-p#course_name{
+p.course_name{
   border: none;
   background: white;
   font-family: Mensch;
@@ -195,6 +223,7 @@ p#course_name{
 }
 
 p#course_description{
+  color: #B8BFCB;
   border: none;
   width: 99%;
   margin: 2px;
@@ -203,7 +232,7 @@ p#course_description{
   margin-bottom: 25px;
 }
 
-div#course_options{
+div.show_options{
   margin-left: auto;
   margin-right:auto;
   width: 270px;
