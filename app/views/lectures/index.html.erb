@@ -7,7 +7,19 @@ padding-left: 25px;
 <a id="notes_link" href="/notebooks/">Notes</a>
 </nav>
 
-<%= link_to 'New Lecture', new_course_lecture_path(@course) %>
+
+
+<% if current_account.teacher? %>
+  <form id="new_course">
+    <!-- <input type="submit" value="New Lecture"> -->
+
+  <div class="actions" id="new_lecture">
+     <%= link_to 'New Lecture', new_course_lecture_path(@course) %>
+  </div>
+    
+  </form>
+<% end %>
+
 <div class="content">
   <div id="lecutre_index">
     <% @lectures.each do |lecture| %>

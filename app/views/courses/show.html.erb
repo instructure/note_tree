@@ -33,6 +33,7 @@ padding-left: 25px;
   <% if current_account.teacher? %>
     <%= link_to 'Edit', edit_course_path(@course) %> |
     <%= link_to 'Add Lecture', new_course_lecture_path(@course) %> |
-  <% end %>
+  <% end %> 
+  <%= link_to 'View Lectures', course_lectures_path(@course) %> |
   <%= link_to 'Back', courses_path %>
 </div>
