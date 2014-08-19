@@ -151,6 +151,7 @@ ul.display_options{
   list-style: none;
   position: absolute;
   padding: 0px;
+  margin:0px;
 }
 
 li{
@@ -161,6 +162,52 @@ li{
 div#notebook{
   background: white;
   margin: 100px;  
+}
+
+div#show_course{
+  background: white;
+  margin: 100px; 
+  margin-bottom: 15px;
+}
+
+p#course_short_name{
+  border: none;
+  background: white;
+  font-family: Mensch;
+  font-size: 48px;
+  color: #7C6FB2;
+  width: 80%;
+  height: 60px;
+  margin: 2px;
+  padding-top: 35px;  
+}
+
+p#course_name{
+  border: none;
+  background: white;
+  font-family: Mensch;
+  font-size: 32px;
+  color: #F16672;
+  width: 50%;
+  height: 50px;
+  padding-bottom: 20px;
+  margin: 2px;
+}
+
+p#course_description{
+  border: none;
+  width: 99%;
+  margin: 2px;
+  font-family: Avenir;
+  font-size: 32px;
+  margin-bottom: 25px;
+}
+
+div#course_options{
+  margin-left: auto;
+  margin-right:auto;
+  width: 270px;
+  text-align: center;
 }
 
 div#course{

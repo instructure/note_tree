@@ -29,7 +29,7 @@ padding-left: 25px;
           <%if current_account.student && current_account.student.is_enrolled?(course) %>
             ENROLLED IN THIS BOOOOOOOM.
           <% elsif current_account.student %>
-            <%= button_to 'Join as Student', course_enroll_student_path(:course_id => course, :id=> current_account.student.id), method: :put %>
+            <%= button_to 'Join as Student', course_enroll_student_path(:course_id => course, :id=> current_account.student.id), method: :put%>
           <% end %>
         </div>
         <ul class="display_options">
