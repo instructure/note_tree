@@ -14,7 +14,7 @@
 <p class="alert"><%= alert %></p>
 
 <% if account_signed_in?%>
-	<li>
+	<li id="logout">
   <%= link_to('Logout', destroy_account_session_path, :method => :delete) %>
   </li>
 <% end %>

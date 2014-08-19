@@ -6,7 +6,9 @@ padding-left: 25px;
 <a id="course_link" href="/courses/">Courses</a>
 <a id="notes_link" href="/notebooks/">Notes</a>
 </nav>
+
 <%= link_to 'New Lecture', new_course_lecture_path(@course) %>
+<div class="content">
   <div id="lecutre_index">
     <% @lectures.each do |lecture| %>
     <div class="listing_lectures">
@@ -24,3 +26,4 @@ padding-left: 25px;
       </div>
     <% end %>
   </div>
+</div>

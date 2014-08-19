@@ -10,11 +10,10 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label "Choose Lecture" %>
+  <div class="field" id="choose_lecture">
     <%= f.select :lecture_id, @lectures %>
   </div>
-  <div class="actions">
+  <div class="actions" id="notebook_submit">
     <%= f.submit %>
   </div>
   <div id="notebook">

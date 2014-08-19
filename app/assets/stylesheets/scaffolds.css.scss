@@ -6,6 +6,12 @@ body.user{
   margin: 0;  
 }
 
+li#logout{
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}
+
 nav{
   background-color: #1D233C;
   height: 80px;
@@ -33,6 +39,13 @@ input[type="submit"]{
   font-family: Mensch;
   font-size: 32px;
   padding-top: 8px;
+}
+
+form#new_course{
+  width: 260px;
+  position:relative;
+  left: 904px;
+  margin-top: 20px;
 }
 
 form#new_account.new_account{
@@ -84,22 +97,28 @@ p.notice{
 div.listing_courses{
   border: solid white 2px;
   padding: 25px;
-  margin: 30px;
-  width: 22%;
+  margin: 35px;
+  width: 270px;
   height: 200px;
   background: white;
-  float:left
+  float:left;
+  
 }
 
 div#course_index:nth-child(4n){
   clear: both;
 }
 
+div.content{
+  margin: 0 auto;
+  width: 1200px;
+}
+
 div.listing_lectures{
   border: solid white 2px;
   padding: 25px;
   margin: 30px;
-  width: 22%;
+  width: 270px;
   height: 200px;
   background: white;
   float:left
@@ -113,7 +132,7 @@ div.listing_notebooks{
   border: solid white 2px;
   padding: 25px;
   margin: 30px;
-  width: 22%;
+  width: 270px;
   height: 200px;
   background: white;
   float:left
@@ -164,6 +183,7 @@ div#course_description{
   font-size: 24px;
   color: #B8BFCB;
   padding-top: 15px;
+  padding-bottom: 10px;
 }
 
 ul.display_options{
@@ -184,6 +204,7 @@ div#notebook{
   background: white;
   margin: 100px; 
   height: 600px; 
+  margin-bottom: 15px;
 }
 
 div#show_course{
@@ -320,7 +341,7 @@ div#lecture_submit.actions{
   width: 250px;
   position:absolute;
   top: 100px;
-  right:8%;  
+  right:100px;  
 }
 select#course_start_date_1i{
  background-color: white;
@@ -394,7 +415,7 @@ div#course_submit.actions{
   width: 250px;
   position:absolute;
   top: 100px;
-  right:8%;  
+  right:100px;  
 }
 select#lecture_date_1i{
   background-color: white;
@@ -403,7 +424,7 @@ select#lecture_date_1i{
   border-radius: 3px;
   margin: 2px;
   border: solid #B8BFCB 1px;
-  color: #B88FCB;
+  color: #B8BFCB;
   padding: 5px;
   font-size: 14px;
 }
@@ -414,7 +435,7 @@ select#lecture_date_2i{
   border-radius: 3px;
   margin: 2px;
   border: solid #B8BFCB 1px;
-  color: #B88FCB;
+  color: #B8BFCB;
   padding: 5px;
   font-size: 14px;
 }
@@ -425,7 +446,7 @@ select#lecture_date_3i{
   border-radius: 3px;
   margin: 2px;
   border: solid #B8BFCB 1px;
-  color: #B88FCB;
+  color: #B8BFCB;
   padding: 5px;
   font-size: 14px;
 }
@@ -441,6 +462,24 @@ input#lecture_title{
   height: 100px;
   margin: 2px;
   padding-bottom:5px;
+}
+select#notebook_lecture_id{
+  background-color: #B8BFCB;
+  width: 232px;
+  height: 35px;
+  border-radius: 3px;
+  margin: 10px;
+  border: solid #B8BFCB 1px;
+  color: #FFF;
+  padding: 5px;
+  font-size: 14px;
+}
+
+div#choose_lecture.field{
+  width:250px;
+  position:absolute;
+  top:100px;
+  left:100px;  
 }
 
 textarea#lecture_summary{
@@ -461,7 +500,12 @@ textarea#notebook_text{
   font-size: 32px;
   height: 455px;
 }
-
+div#notebook_submit.actions{
+  width: 250px;
+  position:absolute;
+  top: 100px;
+  right:100px;  
+}
 input#notebook_title{
   border: none;
   background: white;
