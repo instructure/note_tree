@@ -8,29 +8,38 @@ padding-left: 25px;
 </nav>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Text:</strong>
-  <%= @notebook.text %>
-</p>
+<div id="show_notebook">
+	<p id="notebook_title">
+    <%= @notebook.title %>
+  </p>
+  <p id="notebook_text">
+	  <%= @notebook.text %>
+	</p>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @notebook.title %>
-</p>
-<h2>Versions</h2>
-<% @notebook.versions.each do |version| %>
-  <p>
-<%= link_to 'View version',  notebook_version_path(@notebook, version) %>
-  </p> 
-<% end %> 
+<div id="notebook_info">
+ <div id="show_versions">
+    <h2 id="versions">Versions:</h2>
+    <% @notebook.versions.each do |version| %>
+      <p>
+    <%= link_to 'View version',  notebook_version_path(@notebook, version) %>
+      </p> 
+    <% end %> 
+  </div>
 
-<%= link_to 'Back', notebooks_path %>
-<% if current_account == @notebook.account %>
-| <%= link_to 'Edit', edit_notebook_path(@notebook) %>
-<% end %>
+  <div id="show_comments">
+    <h2 class="comments" id="comment">Comments:</h2>
+    <%= render @notebook.version_comments %> 
 
-<h2>Comments</h2>
-<%= render @notebook.version_comments %> 
+    <h2 class="comments">Add a comment:</h2>
+    <%= render "comments/form" %>
+  </div>
+</div>
 
-<h2>Add a comment:</h2>
-<%= render "comments/form" %>
+<div class="show_options">
+  <%= link_to 'Back', notebooks_path %>
+  <% if current_account == @notebook.account %>
+  | <%= link_to 'Edit', edit_notebook_path(@notebook) %>
+  <% end %>
+</div>
+

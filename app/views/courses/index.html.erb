@@ -30,7 +30,7 @@
           <% end %></td>
           <div> 
             <%if current_account.student && current_account.student.is_enrolled?(course) %>
-              You are enrolled in this course..
+              You are enrolled in this course.
             <% elsif current_account.student %>
               <%= button_to 'Join as Student', course_enroll_student_path(:course_id => course, :id=> current_account.student.id), method: :put%>
             <% end %>
